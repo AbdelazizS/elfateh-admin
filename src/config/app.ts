@@ -73,17 +73,17 @@ export const APP_MENU: Record<string, { name: string, routes: IDashboardMenus[] 
 
 
 
-  AP: {
-    name: '',
-    routes: [
-      {
-        title: 'settings',
-        path: 'settings',
-        icon: 'Settings',
-        description: 'Settings'
-      },
-    ],
-  },
+  // AP: {
+  //   name: '',
+  //   routes: [
+  //     {
+  //       title: 'settings',
+  //       path: 'settings',
+  //       icon: 'Settings',
+  //       description: 'Settings'
+  //     },
+  //   ],
+  // },
 };
 
 export const globalSearch = {
