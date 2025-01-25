@@ -3,6 +3,7 @@ import { h } from 'vue'
 import ColumnHeader from './ColumnHeader.vue'
 import DataTableDropDown from './DataTableDropDown.vue'
 import StatusAction from './StatusAction.vue'
+import TransLate from '@/components/TransLate.vue'
 
 export interface product {
   id: number
@@ -16,22 +17,27 @@ export const columns: ColumnDef<product>[] = [
     header: 'ID'
   },
   {
-    accessorKey: 'Client Name',
-    header: 'Client Name'
+    accessorKey: 'Client_Name',
+    header: () => h(TransLate, { item: { key: 'Client_Name' } })
+    
   },
   {
     accessorKey: 'Date',
-    header: 'Date',
-    //  header: () => h(TransLate, { item: { key: 'product_description' } }),
+    header: () => h(TransLate, { item: { key: 'Date' } }),
     cell: (info) => new Date(info.getValue()).toLocaleString()
   },
-  { accessorKey: 'Delivery Boy', header: 'Delivery Boy' },
+  { accessorKey: 'Delivery_Boy',
+
+
+    header: () => h(TransLate, { item: { key: 'Delivery_Boy' } })
+   },
   {
     accessorKey: 'Location',
-    header: 'Location'
+    header: () => h(TransLate, { item: { key: 'Location' } })
   },
   {
-    accessorKey: 'Order Status',
+    accessorKey: 'Order_Status',
+    header: () => h(TransLate, { item: { key: 'Order_Status' } }),
     cell: ({ row }) => {
       const item = row.original
 
@@ -42,11 +48,11 @@ export const columns: ColumnDef<product>[] = [
     }
   },
   {
-    accessorKey: 'Transportation Cost',
+    accessorKey: 'Transportation_Cost',
     header: ({ column }) =>
       h(ColumnHeader, {
         column: column,
-        title: 'Transportation Cost'
+        title: 'Transportation_Cost'
       })
   },
 

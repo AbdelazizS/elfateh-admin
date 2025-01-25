@@ -33,11 +33,14 @@ import { columns } from './components/columns'
 import AddProduct from './components/AddProduct.vue'
 import Loader from '@/components/Loader.vue'
 import { Skeleton } from '@/components/ui/skeleton'
-import { useProductsStore } from '@/stores/categoriesStore.js'
+import { useProductsStore } from '@/stores/appStore.js'
+import { useAuthStore } from '@/stores/authStore'
+
+const authStore = useAuthStore()
 
 const productsStore = useProductsStore()
 
 onMounted(() => {
-  productsStore.getItems()
+  productsStore.getItems(authStore.token)
 })
 </script>

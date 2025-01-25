@@ -72,14 +72,14 @@ import {
 import { required } from '@vee-validate/rules'
 import { defineRule } from 'vee-validate'
 
-import { addCategory, getCategories } from '@/services/api.js'
+import { addCategory } from '@/services/api.js'
 
 import { Plus } from 'lucide-vue-next'
 import { ref, watch } from 'vue'
 import BaseInput from '@/components/BaseInput.vue'
 import FileInput from '@/components/fileInput.vue'
 import { useAuthStore } from '@/stores/authStore'
-import { useCategoriesStore } from '@/stores/categoriesStore'
+import { useCategoriesStore } from '@/stores/appStore'
 import { useToast } from '@/components/ui/toast/use-toast'
 import { useRouter } from 'vue-router'
 import Loader from '@/components/Loader.vue'
@@ -97,17 +97,16 @@ const schema = {
 }
 
 function previewFile() {
-  var preview = document.querySelector('img')
-  var file = document.querySelector('input[type=file]').files[0]
-  var reader = new FileReader()
+  const preview = document.querySelector('img')
+  const file = document.querySelector('input[type=file]').files[0]
+  const reader = new FileReader()
 
-  reader.onloadend = function () {
+  reader.onloadend =  ()  =>{
     form.value.image = reader.result
   }
 
   if (file) {
     reader.readAsDataURL(file)
-    console.log(reader)
   } else {
     preview.src = ''
   }
@@ -120,7 +119,6 @@ const handelAdd = (values) => {
     .then((res) => {
       loading.value = false
       if (res.data.succNum === 200) {
-        Router.push('/dashboard/categories')
         categoriesStore.getItems()
         toast({
           title: 'add_data_success',

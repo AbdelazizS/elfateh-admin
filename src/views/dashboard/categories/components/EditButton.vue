@@ -84,7 +84,7 @@ import { defineRule } from 'vee-validate'
 import { ref } from 'vue'
 import { useToast } from '@/components/ui/toast/use-toast'
 import Loader from '@/components/Loader.vue'
-import { useCategoriesStore } from '@/stores/categoriesStore.js'
+import { useCategoriesStore } from '@/stores/appStore.js'
 import { useAuthStore } from '@/stores/authStore'
 
 import { updateCategory } from '@/services/api.js'
@@ -118,20 +118,16 @@ const id = props.item.ID
 
 
 
-console.log(authStore.token , 'token');
 const handelUpdate = (values) => {  
   form.value.name = values.name
 
   
 
-  console.log(values , 'values');
-  console.log(form.value , 'form');
-  console.log(authStore , 'token');
+  
   
   updateCategory({ ...values, id, token })
     .then((res) => {
-      console.log(res)
-      categoriesStore.getItems()
+      categoriesStore.getItems(authStore.token)
       if (res.data.succNum === 200) {
         toast({
           title: 'update_data_success',
@@ -170,3 +166,4 @@ function previewFile() {
   }
 }
 </script>
+@/stores/appStore.js

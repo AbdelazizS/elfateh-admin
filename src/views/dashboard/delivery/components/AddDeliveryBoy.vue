@@ -110,7 +110,7 @@ import { ref, watch } from 'vue'
 import BaseInput from '@/components/BaseInput.vue'
 import FileInput from '@/components/fileInput.vue'
 import { useAuthStore } from '@/stores/authStore'
-import { useDeliveryStore } from '@/stores/categoriesStore'
+import { useDeliveryStore } from '@/stores/appStore'
 import { useToast } from '@/components/ui/toast/use-toast'
 import { useRouter } from 'vue-router'
 import Loader from '@/components/Loader.vue'
@@ -153,7 +153,7 @@ const handelAdd = (values) => {
       
       loading.value = false
       if (res.data.succNum === 200) {
-        deliveryStore.getItems()
+        deliveryStore.getItems(token)
         toast({
           title: 'add_data_success',
           success: true,

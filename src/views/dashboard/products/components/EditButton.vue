@@ -118,7 +118,7 @@
            * 1-from props 
            * 2-stat changes image 
            -->
-            <img v-if="form.file" :src="form.image ? form.image : form.file" class="h-16 w-16" />
+            <img v-if="form.file" :src="form.image ? form.image : form.file" class="mt-1 h-16 w-16" />
           </div>
 
           <!-- <Skeleton class="h-24 w-24" /> -->
@@ -178,7 +178,7 @@ import { defineRule } from 'vee-validate'
 import { ref } from 'vue'
 import { useToast } from '@/components/ui/toast/use-toast'
 import Loader from '@/components/Loader.vue'
-import { useCategoriesStore ,useProductsStore } from '@/stores/categoriesStore.js'
+import { useCategoriesStore ,useProductsStore } from '@/stores/appStore.js'
 import { useAuthStore } from '@/stores/authStore'
 
 import { updateProduct } from '@/services/api.js'
@@ -229,7 +229,7 @@ const handelUpdate = (values) => {
   updateProduct({ ...values, category_id: Item.ID, token, product_id: id })
     .then((res) => {
       console.log(res)
-      productsStore.getItems()
+      productsStore.getItems(authStore.token)
       if (res.data.succNum === 200) {
         toast({
           title: 'update_data_success',

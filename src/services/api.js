@@ -7,14 +7,21 @@ export const instance = axios.create({
   baseURL: baseURL
 })
 
-// Products-API's
+
+
+
+
+/*
+ *   Products-API's
+ */
 export const addProduct = ({
   product_name,
   product_description,
   category_id,
   product_price,
   product_price_old,
-  image
+  image,
+  token
 }) => {
   const formData = new FormData()
   formData.append('product_name', product_name)
@@ -23,10 +30,7 @@ export const addProduct = ({
   formData.append('product_price', product_price)
   formData.append('product_price_old', product_price_old)
   formData.append('image', image)
-  formData.append(
-    'token',
-    ' eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5ldG9vbGFicy5jb20vdjMvcHVibGljL2NwYW5lbC9sb2dpbiIsImlhdCI6MTczNzYzNDQzNywiZXhwIjoxNzM3NjM4MDM3LCJuYmYiOjE3Mzc2MzQ0MzcsImp0aSI6Im44VnBRVk00OGNIUEp6SkwiLCJzdWIiOiIxNiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.ogpFRwYXRWqUw0JBA3WDjSsldLhj8tLN9UXL7rEp0J0'
-  )
+  formData.append('token',token)
 
   return new Promise((resolve, reject) => {
     instance
@@ -104,21 +108,25 @@ export const getProducts = (token) => {
     instance
       // product_category
       .post('products', {
-        token:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5ldG9vbGFicy5jb20vdjMvcHVibGljL2NwYW5lbC9sb2dpbiIsImlhdCI6MTcyMTA1NjA2MywiZXhwIjoxNzgxMDU2MDYzLCJuYmYiOjE3MjEwNTYwNjMsImp0aSI6IjI3SVdYdE1teERCWDdKSGMiLCJzdWIiOiIxNiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.KYUrlK4Hos-de3gHxL8HSx5GPSnzjREXghunA75jUJQ'
+        token:token
       })
       .then((resp) => {
         resolve(resp)
       })
       .catch((error) => {
-        console.log(error)
-
-        // reject(error)
+        reject(error)
       })
   })
 }
 
-// Notifications-API's
+
+
+
+
+/*
+ *   Notifications-API's
+ */
+
 
 export const addNotification = ({ title, Notification, user_id, token }) => {
   return new Promise((resolve, reject) => {
@@ -158,21 +166,18 @@ export const updateNotification = ({ Notification, title, id, token }) => {
 }
 
 export const deleteNotification = ({ token, id }) => {
-  console.log(id)
 
   return new Promise((resolve, reject) => {
     instance
       .post(`messages/delete/${id}`, {
-        token:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5ldG9vbGFicy5jb20vdjMvcHVibGljL2NwYW5lbC9sb2dpbiIsImlhdCI6MTcyMTA1NjA2MywiZXhwIjoxNzgxMDU2MDYzLCJuYmYiOjE3MjEwNTYwNjMsImp0aSI6IjI3SVdYdE1teERCWDdKSGMiLCJzdWIiOiIxNiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.KYUrlK4Hos-de3gHxL8HSx5GPSnzjREXghunA75jUJQ'
+        token:token
       })
       .then((resp) => {
         resolve(resp)
       })
       .catch((error) => {
-        console.log(error)
 
-        // reject(error)
+        reject(error)
       })
   })
 }
@@ -188,16 +193,19 @@ export const getNotifications = (token) => {
         resolve(resp)
       })
       .catch((error) => {
-        console.log(error)
-
-        // reject(error)
+        reject(error)
       })
   })
 }
 
-// Delivery-API's
 
-export const addDeliveryBoy = ({ transportation_type, note, image, name, email }) => {
+/*
+ *   Delivery-API's
+ */
+
+
+
+export const addDeliveryBoy = ({ token , transportation_type, note, image, name, email }) => {
   const formData = new FormData()
   formData.append('name', name)
   formData.append('image', image)
@@ -205,8 +213,7 @@ export const addDeliveryBoy = ({ transportation_type, note, image, name, email }
   formData.append('note', note)
   formData.append('phone', email)
   formData.append(
-    'token',
-    ' eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5ldG9vbGFicy5jb20vdjMvcHVibGljL2NwYW5lbC9sb2dpbiIsImlhdCI6MTczNzYzNDQzNywiZXhwIjoxNzM3NjM4MDM3LCJuYmYiOjE3Mzc2MzQ0MzcsImp0aSI6Im44VnBRVk00OGNIUEp6SkwiLCJzdWIiOiIxNiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.ogpFRwYXRWqUw0JBA3WDjSsldLhj8tLN9UXL7rEp0J0'
+    'token',token
   )
 
   return new Promise((resolve, reject) => {
@@ -226,8 +233,7 @@ export const addDeliveryBoy = ({ transportation_type, note, image, name, email }
   })
 }
 
-export const updateDeliveryBoy = ({ id, transportation_type, note, image, name, email }) => {
-  console.log(id, image, name, email, transportation_type)
+export const updateDeliveryBoy = ({ token,id, transportation_type, note, image, name, email }) => {
 
   const formData = new FormData()
   formData.append('name', name)
@@ -236,8 +242,7 @@ export const updateDeliveryBoy = ({ id, transportation_type, note, image, name, 
   formData.append('note', note)
   formData.append('phone', email)
   formData.append(
-    'token',
-    ' eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5ldG9vbGFicy5jb20vdjMvcHVibGljL2NwYW5lbC9sb2dpbiIsImlhdCI6MTczNzYzNDQzNywiZXhwIjoxNzM3NjM4MDM3LCJuYmYiOjE3Mzc2MzQ0MzcsImp0aSI6Im44VnBRVk00OGNIUEp6SkwiLCJzdWIiOiIxNiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.ogpFRwYXRWqUw0JBA3WDjSsldLhj8tLN9UXL7rEp0J0'
+    'token',token
   )
 
   return new Promise((resolve, reject) => {
@@ -258,21 +263,18 @@ export const updateDeliveryBoy = ({ id, transportation_type, note, image, name, 
 }
 
 export const deleteDeliveryBoy = ({ token, id }) => {
-  console.log(id)
 
   return new Promise((resolve, reject) => {
     instance
       .post(`delivery/delete/${id}`, {
-        token:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5ldG9vbGFicy5jb20vdjMvcHVibGljL2NwYW5lbC9sb2dpbiIsImlhdCI6MTcyMTA1NjA2MywiZXhwIjoxNzgxMDU2MDYzLCJuYmYiOjE3MjEwNTYwNjMsImp0aSI6IjI3SVdYdE1teERCWDdKSGMiLCJzdWIiOiIxNiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.KYUrlK4Hos-de3gHxL8HSx5GPSnzjREXghunA75jUJQ'
+        token:token
       })
       .then((resp) => {
         resolve(resp)
       })
       .catch((error) => {
-        console.log(error)
 
-        // reject(error)
+        reject(error)
       })
   })
 }
@@ -282,16 +284,13 @@ export const getDeliveryBoys = (token) => {
     instance
       // product_category
       .post('delivery', {
-        token:
-          ' eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5ldG9vbGFicy5jb20vdjMvcHVibGljL2NwYW5lbC9sb2dpbiIsImlhdCI6MTczNzYzNDQzNywiZXhwIjoxNzM3NjM4MDM3LCJuYmYiOjE3Mzc2MzQ0MzcsImp0aSI6Im44VnBRVk00OGNIUEp6SkwiLCJzdWIiOiIxNiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.ogpFRwYXRWqUw0JBA3WDjSsldLhj8tLN9UXL7rEp0J0'
+        token:token
       })
       .then((resp) => {
         resolve(resp)
       })
       .catch((error) => {
-        console.log(error)
-
-        // reject(error)
+        reject(error)
       })
   })
 }
@@ -362,31 +361,29 @@ export const getOrders = (token) => {
         resolve(resp)
       })
       .catch((error) => {
-        console.log(error)
-
         reject(reject)
       })
   })
 }
 
-// Users-API's
+
+/*
+ *   Users-API's
+ */
 
 export const deleteUser = ({ token, id }) => {
-  console.log(token, 'api.js')
 
   return new Promise((resolve, reject) => {
     instance
       .post(`user_management/clients/delete/${id}`, {
-        token:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5ldG9vbGFicy5jb20vdjMvcHVibGljL2NwYW5lbC9sb2dpbiIsImlhdCI6MTcyMTA1NjA2MywiZXhwIjoxNzgxMDU2MDYzLCJuYmYiOjE3MjEwNTYwNjMsImp0aSI6IjI3SVdYdE1teERCWDdKSGMiLCJzdWIiOiIxNiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.KYUrlK4Hos-de3gHxL8HSx5GPSnzjREXghunA75jUJQ'
+        token:token
       })
       .then((resp) => {
         resolve(resp)
       })
       .catch((error) => {
-        console.log(error)
 
-        // reject(error)
+        reject(error)
       })
   })
 }
@@ -447,27 +444,25 @@ export const getUsers = (token) => {
       )
       .then((resp) => {
         resolve(resp)
+        
       })
       .catch((error) => {
-        console.log(error)
-
-        // reject(error)
+        reject(error)
       })
   })
 }
 
-// Categories-API's
+/*
+ *  Categories-API's
+ */
 
 export const addCategory = ({ name, image, token }) => {
-  console.log('api.js')
-
   const formData = new FormData()
-  formData.append('image', image)
+  if (image) {
+    formData.append('image', image)
+  }
   formData.append('category_name', name)
-  formData.append(
-    'token',
-    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5ldG9vbGFicy5jb20vdjMvcHVibGljL2NwYW5lbC9sb2dpbiIsImlhdCI6MTcyMTA1NjA2MywiZXhwIjoxNzgxMDU2MDYzLCJuYmYiOjE3MjEwNTYwNjMsImp0aSI6IjI3SVdYdE1teERCWDdKSGMiLCJzdWIiOiIxNiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.KYUrlK4Hos-de3gHxL8HSx5GPSnzjREXghunA75jUJQ'
-  )
+  formData.append('token', token)
 
   return new Promise((resolve, reject) => {
     axios
@@ -498,12 +493,7 @@ export const updateCategory = ({ id, name, token, image }) => {
   if (image) {
     formData.append('image', image)
   }
-  formData.append(
-    'token',
-    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5ldG9vbGFicy5jb20vdjMvcHVibGljL2NwYW5lbC9sb2dpbiIsImlhdCI6MTczNzYzNDQzNywiZXhwIjoxNzM3NjM4MDM3LCJuYmYiOjE3Mzc2MzQ0MzcsImp0aSI6Im44VnBRVk00OGNIUEp6SkwiLCJzdWIiOiIxNiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.ogpFRwYXRWqUw0JBA3WDjSsldLhj8tLN9UXL7rEp0J0'
-  )
-
-  console.log(token)
+  formData.append('token', token)
 
   // formData.append('transportation_type', transportation_type)
 
@@ -525,21 +515,17 @@ export const updateCategory = ({ id, name, token, image }) => {
 }
 
 export const deleteCategory = ({ token, id }) => {
-  console.log(token, 'api.js')
 
   return new Promise((resolve, reject) => {
     instance
       .post(`settings/categories/delete/${id}`, {
-        token:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5ldG9vbGFicy5jb20vdjMvcHVibGljL2NwYW5lbC9sb2dpbiIsImlhdCI6MTcyMTA1NjA2MywiZXhwIjoxNzgxMDU2MDYzLCJuYmYiOjE3MjEwNTYwNjMsImp0aSI6IjI3SVdYdE1teERCWDdKSGMiLCJzdWIiOiIxNiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.KYUrlK4Hos-de3gHxL8HSx5GPSnzjREXghunA75jUJQ'
+        token: token
       })
       .then((resp) => {
         resolve(resp)
       })
       .catch((error) => {
-        console.log(error)
-
-        // reject(error)
+        reject(error)
       })
   })
 }
@@ -547,28 +533,28 @@ export const deleteCategory = ({ token, id }) => {
 export const getCategories = (token) => {
   return new Promise((resolve, reject) => {
     instance
-      .post(`settings/categories`, {
-        token:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5ldG9vbGFicy5jb20vdjMvcHVibGljL2NwYW5lbC9sb2dpbiIsImlhdCI6MTcyMTA1NjA2MywiZXhwIjoxNzgxMDU2MDYzLCJuYmYiOjE3MjEwNTYwNjMsImp0aSI6IjI3SVdYdE1teERCWDdKSGMiLCJzdWIiOiIxNiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.KYUrlK4Hos-de3gHxL8HSx5GPSnzjREXghunA75jUJQ'
+      .post('settings/categories', {
+        token: token
       })
       .then((resp) => {
         resolve(resp)
+        
       })
       .catch((error) => {
-        console.log(error)
-
-        // reject(error)
+        reject(error)
       })
   })
 }
 
-// Auth-API's
+
+/*
+ *  Auth-API's
+ */
 export const Login = (payload) => {
   return new Promise((resolve, reject) => {
     instance
       .post('login', payload)
       .then((resp) => {
-        console.log(resp)
 
         resolve(resp)
         if (resp.status === true) {

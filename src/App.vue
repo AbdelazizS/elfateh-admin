@@ -15,7 +15,6 @@ onMounted(() => {
 const locale = ref(i18n.global.locale)
 
 watch(locale, () => {
-  console.log('locale', locale.value)
   if (i18n.global.locale.value === 'en') {
     document.documentElement.dir = 'ltr'
     document.documentElement.setAttribute('dir', 'ltr')
@@ -26,7 +25,6 @@ watch(locale, () => {
 })
 
 onBeforeMount(() => {
-  console.log(i18n.global.locale.value)
 
   if (i18n.global.locale.value === 'en') {
     document.documentElement.dir = 'ltr'

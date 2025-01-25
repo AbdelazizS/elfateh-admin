@@ -30,7 +30,7 @@ import DataTable from './components/DataTable.vue'
 import { columns } from './components/columns'
 import AddNotification from './components/AddNotification.vue'
 import { Skeleton } from '@/components/ui/skeleton'
-import { useNotificationsStore } from '@/stores/categoriesStore.js'
+import { useNotificationsStore } from '@/stores/appStore.js'
 import { useAuthStore } from '@/stores/authStore'
 import Loader from '@/components/Loader.vue'
 

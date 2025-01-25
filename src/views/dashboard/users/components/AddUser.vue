@@ -104,7 +104,7 @@ import { Plus } from 'lucide-vue-next'
 import { ref } from 'vue'
 import BaseInput from '@/components/BaseInput.vue'
 import { useAuthStore } from '@/stores/authStore'
-import { useCategoriesStore } from '@/stores/categoriesStore'
+import { useUsersStore } from '@/stores/appStore'
 import { useToast } from '@/components/ui/toast/use-toast'
 import { useRouter } from 'vue-router'
 import Loader from '@/components/Loader.vue'
@@ -119,7 +119,7 @@ defineRule('alpha_spaces', alpha_spaces)
 defineRule('confirmed', confirmed)
 
 const authStore = useAuthStore()
-const usersStore = useCategoriesStore()
+const usersStore = useUsersStore()
 const { toast } = useToast()
 const loading = ref(false)
 
@@ -147,7 +147,7 @@ const handelAdd = (values) => {
     .then((res) => {
       loading.value = false
       if (res.data.succNum === 200) {
-        usersStore.getItems()
+        usersStore.getItems(token)
         toast({
           title: 'add_data_success',
           success: true,

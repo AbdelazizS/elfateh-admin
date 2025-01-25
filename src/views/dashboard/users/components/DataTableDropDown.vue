@@ -92,7 +92,7 @@ import { deleteUser } from '@/services/api.js'
 import { ref } from 'vue'
 import { useToast } from '@/components/ui/toast/use-toast'
 import { useAuthStore } from '@/stores/authStore'
-import { useUsersStore } from '@/stores/categoriesStore'
+import { useUsersStore } from '@/stores/appStore'
 
 const { toast } = useToast()
 
@@ -116,10 +116,9 @@ const handelDelete = () => {
 
   deleteUser({ id, token })
     .then((res) => {
-      console.log(res);
       
       Loading.value = false
-      usersStore.removeItem(id)
+      usersStore.getItems(token)
       if (res.data.status === true) {
         toast({
           title: 'delete_data_success',

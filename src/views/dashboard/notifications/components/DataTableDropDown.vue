@@ -90,7 +90,7 @@ import { deleteNotification } from '@/services/api.js'
 import { ref } from 'vue'
 import { useToast } from '@/components/ui/toast/use-toast'
 import { useAuthStore } from '@/stores/authStore'
-import { useNotificationsStore } from '@/stores/categoriesStore'
+import { useNotificationsStore } from '@/stores/appStore'
 
 const { toast } = useToast()
 
@@ -114,7 +114,7 @@ const handelDelete = () => {
       console.log(res);
       
       Loading.value = false
-      notificationsStore.removeItem(id)
+      notificationsStore.getItems(token)
       if (res.data.status === true) {
         toast({
           title: 'delete_data_success',

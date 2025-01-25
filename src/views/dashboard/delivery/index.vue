@@ -22,15 +22,14 @@ import { columns } from './components/columns.ts'
 import DataTable from './components/DataTable.vue'
 import Loader from '@/components/Loader.vue'
 import { Skeleton } from '@/components/ui/skeleton'
-import { useDeliveryStore } from '@/stores/categoriesStore.js'
+import { useDeliveryStore } from '@/stores/appStore.js'
 import { useAuthStore } from '@/stores/authStore'
 
-const data = ref([])
 const authStore = useAuthStore()
 
 const deliveryStore = useDeliveryStore()
 
 onMounted(() => {
-  deliveryStore.getItems()
+  deliveryStore.getItems(authStore.token)
 })
 </script>

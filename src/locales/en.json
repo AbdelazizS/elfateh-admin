@@ -1,82 +1,140 @@
 {
-  "dashboard":"Dashboard",
   "logotxt": "Elfatef",
   "home_page": "Home",
+  "page": "page",
   "submit": "submit",
   "change_theme": "Change Theme",
   "cancel": "cancel",
   "back": "back",
   "or": "or",
   "download_now": "Download Now",
-  "notifications": "Notifications",
   "network_error": "Network Error ! please check your connection",
   "total": "Total Price",
   "verify_your_email": "Verify your email address",
-  "home": {
-    "nav": {
-      "light": "light",
-      "dark": "dark",
-      "arabic": "Arabic",
-      "english": "English",
-      "sign_up": "Create Account",
-      "sign_out": "Log out",
-      "sign_in": "Log In",
-      "my_account": "My Account",
-      "profile": "Profile",
-      "favourites": "Favourites",
-      "notifications": "Notifications"
-    },
+  "add_new": "Add ",
+  "of": "of",
+  "number_of_elements": "The number of elements on the page",
 
-    "hero": {
-      "save": "Save Up to",
-      "save_perc": "15%",
-      "one_stop": "One-Stop",
-      "electronic": "Electronic",
-      "market": "Market",
-      "description": "description"
-    },
-    "offers": {
-      "discounts": "Discounts",
-      "offer-name": "Winter Sale",
-      "offer-discount": "30% OFF",
-      "offer-title": "Fine Smile",
-      "offer-date": "10 Jan to 28 Jan",
-      "offer-description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio illo debitis quam.",
+  "arabic": "Arabic",
+  "english": "English",
 
-      "offer-product-title": "Nvidia Ms11 Pc",
-      "up_to": "Up to"
-    },
-    "cta": {
-      "title": "Let's create more tools and ideas that brings us together.",
-      "description": "Flowbite helps you connect with friends and communities of people who share your interests. Connecting with your friends and family as well as discovering new"
-    },
-    "footer": {
-      "services": "Services",
-      "company": "Company",
-      "platform": "Platform",
-      "additional": "Additional",
-      "support": "Support",
-      "about_us": "About Us",
-      "terms_conditions": "Terms & Conditions",
-      "careers": "Careers",
-      "contact_us": "Contact Us",
-      "partners": "Partners",
-      "rights": "All Rights Reserves"
-    },
-    "get_it_now": "Get it Now",
+  "category_name": "Category name",
+  "Transportation_Cost":"Transportation Cost",
+  "Delivery_Boy":"Delivery Boy",
+  "Location":"Location",
+  "Order_Status":"Order Status",
+  "Client_Name": "Client Name",
+  "Date": "Date",
+  "product_price": "Product Price",
+  "product_name": "Product Name",
+  "product_description": "Product Description",
+  "user_name": "User Name",
+  "phone": "Phone No",
 
-    "categories": "Shop by Category",
-    "categories_desc": "Discover multiple options in each category",
-    "products": "Featured Products",
-    "shop_now": "Shop Now",
-    "add_to_cart": "Add to Cart"
+  "dashboard": "Dashboard",
+  "home": "home",
+  "categories": "Categories",
+  "products": "Products",
+  "profile": "Profile",
+  "account": "Account",
+  "orders": "Orders",
+  "users": "Users",
+  "delivery": "Delivery Boys",
+  "settings": "Settings",
+  "notifications": "Notifications",
+
+  "core": "core",
+  "general": "general",
+
+  "Asc": "Asc",
+  "Desc": "Desc",
+  "Hide": "Hide",
+
+  "save_changes": "Save Changes",
+  "delete": "Delete",
+  "confirm_delete": "Confirm Delete",
+  "confirm_delete_message": "Are you sure, do you want to delete?",
+  "update": "Update",
+
+  "sign_in": "Sign In",
+  "sign_up": "Sign Up ",
+  "sign_out": "Sign Out",
+
+  "search_here": "search here",
+
+  "update_data": "Update Data",
+  "add_data_success": "Data added successfully",
+  "update_data_success": "The data has been modified successfully",
+  "delete_data_success": "The data has been deleted successfully",
+  "update_data_description": "Modify the data, then click the Save Changes button",
+
+  "categories_page": {
+    "categories_page_description": "Control categories, add and delete specific categories",
+    "add_new": "Add a new category",
+    "add_description": "Enter the category data, then click the Add Category button",
+    "add_category": "Add category",
+    "category_name": "Category name or title",
+    "category_image": "Category image",
+    "filter_category_by_names": "Search for the name of a specific category"
   },
-  "search": {
-    "items_amount": "{amount} Items Founded",
-    "single_item": "one Item Founded",
-    "no_match": "No Results Matches ",
-    "found": "found"
+
+  "products_page": {
+    "add_new": "Add a new product",
+    "add_description": "Enter the product information, then click the Add Product button",
+    "add_product": "Add Product",
+    "products_page_description": "Control your products. Add, delete or modify product data",
+    "product_name": "Name or title of the product",
+    "product_description": "Product Description",
+    "product_price": "Product Price",
+    "product_price_old": "product Old Price",
+    "product_image": "Product Image",
+    "filter_products_by_names": "Search for a specific product name"
   },
+
+  "users_page": {
+    "add_new": "Add a new user",
+    "add_description": "Enter the user data, then click the Add User button",
+    "add_user": "Add user",
+    "users_page_description": "Control users. Add, delete or modify user data",
+    "filter_users_by_names": "Search for a specific username "
+  },
+
+  "notifications_page": {
+    "add_new": "Add a new notification",
+    "add_description": "Enter the notification data, then click the Add notification button ",
+    "add_notification": "Add notification ",
+    "notifications_page_description": "Control notifications received by users ",
+    "title": "Notification title",
+    "description": "Description of the notice",
+    "content": "Notification content",
+    "user_id": "The user's ID  ",
+    "filter_notifications_by_names": "Search for a specific notification title "
+  },
+
+  "delivery_page": {
+    "add_new": "Add a new delivery captain",
+    "add_description": "Enter the delivery captain’s information, then click the Add Delivery Captain button",
+    "add_captain": "Add delivery captain",
+    "delivery_page_description": "Control deliveries and add delivery captains    ",
+    "user_name": "Delivery captain's name",
+    "user_image": "Picture of delivery captain",
+    "phone": "Phone No",
+    "note": "Note",
+    "transportation_type": "Type of delivery vehicle",
+    "filter_notifications_by_names": "Search for the name of a specific delivery captain "
+  },
+
+  "orders_page": {
+    "orders_page_description": "Control orders and modify customer orders ",
+    "add_new": "Add a new order",
+    "add_description": "Enter the order information, then click the Add Order button",
+    "add_order": "Add Order",
+    "edit_status": "Modify the order status of the order",
+    "_status": "order status",
+    "filter_orders_by_names": "Search for the customer name of a specific order",
+    "confirm_edit_status": "Modifying the order status after adding a specific delivery captain !"
+  },
+
   "auth": {
     "verify_email": "Email Verification",
     "reset_password": "Reset Your Password",
@@ -119,46 +177,5 @@
     "alpha_spaces": "this field should contain only letters",
     "strong_password": "Your password must be at least 8 characters long, contain at least one number, one of the special characters, and a combination of upper and lower case letters.",
     "passwordConf_err": "password does not match"
-  },
-  "product_details": {
-    "related_products": "Related Products",
-    "reviews": "Reviews",
-    "customers_reviews": "Customers Reviws",
-    "specifications": "Specifications",
-    "product_specifications": "Product Specifications",
-    "read_all": "Read all Reviews"
-  },
-  "shopping_cart": {
-    "title": "Shopping Cart",
-    "added_success": "Product Added to Cart Successfully",
-    "removed_success": "Product Removed from Cart Successfully",
-    "added_to_fav": "Product Added to Favourites Successfully",
-    "removed_from_fav": "Product Removed from Favourites Successfully",
-    "order_summary": "Order Summary",
-    "continue_shopping": "Continue Shopping",
-    "total": "Total",
-    "shipping": "Shipping",
-    "checkout": "Proceed to Checkout",
-    "original_price": "Original Price",
-    "your_cart": "Your Cart is",
-    "empty_cart_desc": "You can add products to your shopping cart, either by searching or browsing products",
-    "empty": "Empty"
-  },
-  "profile": {
-    "update_password": "Update Password",
-    "personal_info": "Personal Info",
-    "settings&data": "Website Settings & Data"
-  },
-  "orders": {
-    "orders": "Orders",
-    "order_id": "Order Id",
-    "status": "Status",
-    "order_added": "order added successfully",
-    "products": "Products",
-    "confirmed": "Confirmed",
-    "order_details": "Order Details"
-  },
-  "category": {
-    "products": "Products"
   }
 }

@@ -92,7 +92,7 @@ import { deleteCategory } from '@/services/api.js'
 import { ref } from 'vue'
 import { useToast } from '@/components/ui/toast/use-toast'
 import { useAuthStore } from '@/stores/authStore'
-import { useCategoriesStore } from '@/stores/categoriesStore'
+import { useCategoriesStore } from '@/stores/appStore.js'
 
 const { toast } = useToast()
 
@@ -114,7 +114,7 @@ const handelDelete = () => {
   deleteCategory({ id, token })
     .then((res) => {
       Loading.value = false
-      categoriesStore.removeItem(id)
+      categoriesStore.getItems(authStore.token)
       if (res.data.succNum === 200) {
         toast({
           title: 'delete_data_success',
@@ -137,3 +137,4 @@ const handelDelete = () => {
 </script>
 
 <style scoped></style>
+@/stores/appStore

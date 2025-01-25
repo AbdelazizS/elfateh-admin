@@ -61,9 +61,9 @@ const table = useVueTable({
   <Input
     v-if="props?.data?.length"
     class="max-w-sm mb-4"
-    placeholder="Filter orders By names..."
-    :model-value="table.getColumn('Client Name')?.getFilterValue()"
-    @update:model-value="table.getColumn('Client Name')?.setFilterValue($event)"
+    :placeholder="$t('orders_page.filter_orders_by_names')"
+    :model-value="table.getColumn('Client_Name')?.getFilterValue()"
+    @update:model-value="table.getColumn('Client_Name')?.setFilterValue($event)"
   />
 
   <div v-if="props?.data?.length" class="border rounded-md">

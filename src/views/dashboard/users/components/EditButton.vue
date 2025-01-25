@@ -110,7 +110,7 @@ import Skeleton from '@/components/ui/skeleton/Skeleton.vue'
 import PasswordInput from '@/components/PasswordInput.vue'
 
 import { useAuthStore } from '@/stores/authStore'
-import { useUsersStore } from '@/stores/categoriesStore'
+import { useUsersStore } from '@/stores/appStore'
 import { updateUser } from '@/services/api.js'
 
 const props = defineProps({
@@ -153,7 +153,6 @@ const handelUpdate = (values) => {
   loading.value = true
 
 
-  console.log(values);
   
   updateUser({ ...values, token , id:props.item.ID })
     .then((res) => {
@@ -189,3 +188,4 @@ const handelUpdate = (values) => {
     })
 }
 </script>
+@/stores/appStore

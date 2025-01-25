@@ -90,7 +90,7 @@ import { deleteDeliveryBoy } from '@/services/api.js'
 import { ref } from 'vue'
 import { useToast } from '@/components/ui/toast/use-toast'
 import { useAuthStore } from '@/stores/authStore'
-import { useDeliveryStore } from '@/stores/categoriesStore'
+import { useDeliveryStore } from '@/stores/appStore'
 
 const { toast } = useToast()
 
@@ -114,7 +114,7 @@ const handelDelete = () => {
       console.log(res);
       
       Loading.value = false
-      deliveryStore.removeItem(id)
+      deliveryStore.getItems(authStore.token)
       if (res.data.status === true) {
         toast({
           title: 'delete_data_success',

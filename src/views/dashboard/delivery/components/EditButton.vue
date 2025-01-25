@@ -109,7 +109,7 @@ import { ref } from 'vue'
 import { useToast } from '@/components/ui/toast/use-toast'
 import Loader from '@/components/Loader.vue'
 import { useAuthStore } from '@/stores/authStore'
-import { useDeliveryStore } from '@/stores/categoriesStore'
+import { useDeliveryStore } from '@/stores/appStore'
 import { updateDeliveryBoy } from '@/services/api.js'
 
 const props = defineProps({
@@ -160,14 +160,12 @@ const handelUpdate = (values) => {
 
   const token = authStore.token
   const id = props.item.ID
-  console.log(id, props.item, 'props.itm')
 
   updateDeliveryBoy({ ...values, id, token })
     .then((res) => {
-      console.log(res)
 
       // Loading.value = false
-      deliveryStore.getItems()
+      deliveryStore.getItems(token)
       if (res.data.succNum === 200) {
         toast({
           title: 'update_data_success',
@@ -177,7 +175,6 @@ const handelUpdate = (values) => {
       }
     })
     .catch((error) => {
-      console.log(error)
 
       // Loading.value = false
       if (!error.response) {

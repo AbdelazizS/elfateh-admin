@@ -21,7 +21,7 @@ import { columns } from './components/columns.ts'
 import DataTable from './components/DataTable.vue'
 import Loader from '@/components/Loader.vue'
 import { Skeleton } from '@/components/ui/skeleton'
-import { useOrdersStore } from '@/stores/categoriesStore.js'
+import { useOrdersStore } from '@/stores/appStore.js'
 import { useAuthStore } from '@/stores/authStore'
 
 const authStore = useAuthStore()

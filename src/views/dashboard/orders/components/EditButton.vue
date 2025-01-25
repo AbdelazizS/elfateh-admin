@@ -104,7 +104,6 @@ const form = ref({
 })
 
 const handelUpdate = (values) => {
-  console.log(props.item, values)
 
   Loading.value = true
   toast({

@@ -63,9 +63,9 @@ const table = useVueTable({
   <Input
   v-if="props?.data?.length" 
     class="max-w-sm mb-4"
-    placeholder="Filter Product By names..."
-    :model-value="table.getColumn('product_name')?.getFilterValue()"
-    @update:model-value="table.getColumn('product_name')?.setFilterValue($event)"
+    :placeholder="$t('delivery_page.filter_notifications_by_names')"
+    :model-value="table.getColumn('user_name')?.getFilterValue()"
+    @update:model-value="table.getColumn('user_name')?.setFilterValue($event)"
   />
 
   

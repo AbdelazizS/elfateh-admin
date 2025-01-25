@@ -95,7 +95,7 @@ import { ref } from 'vue'
 import { useToast } from '@/components/ui/toast/use-toast'
 import Loader from '@/components/Loader.vue'
 import { useAuthStore } from '@/stores/authStore'
-import { useNotificationsStore } from '@/stores/categoriesStore'
+import { useNotificationsStore } from '@/stores/appStore'
 import { updateNotification } from '@/services/api.js'
 
 const props = defineProps({

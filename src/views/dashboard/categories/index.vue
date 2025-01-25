@@ -29,12 +29,14 @@ import DataTable from './components/DataTable.vue'
 import { columns } from './components/columns'
 import AddCategory from './components/AddCategory.vue'
 import { Skeleton } from '@/components/ui/skeleton'
-import { useCategoriesStore } from '@/stores/categoriesStore.js'
+import { useCategoriesStore } from '@/stores/appStore.js'
 import Loader from '@/components/Loader.vue'
+import { useAuthStore } from '@/stores/authStore'
 
+const authStore = useAuthStore()
 const categoriesStore = useCategoriesStore()
 
 onMounted(() => {
-  categoriesStore.getItems()
+  categoriesStore.getItems(authStore.token)
 })
 </script>

@@ -90,7 +90,7 @@ import { deleteOrder } from '@/services/api.js'
 import { ref } from 'vue'
 import { useToast } from '@/components/ui/toast/use-toast'
 import { useAuthStore } from '@/stores/authStore'
-import { useOrdersStore } from '@/stores/categoriesStore'
+import { useOrdersStore } from '@/stores/appStore'
 
 const { toast } = useToast()
 
@@ -111,7 +111,6 @@ const handelDelete = () => {
 
   deleteOrder({ id, token })
     .then((res) => {
-      console.log(res)
       Loading.value = false
       ordersStore.getItems(token)
       if (res.data.status === true) {
@@ -123,7 +122,6 @@ const handelDelete = () => {
       }
     })
     .catch((error) => {
-      console.log(error)
 
       Loading.value = false
       if (!error.response) {
@@ -138,3 +136,4 @@ const handelDelete = () => {
 </script>
 
 <style scoped></style>
+@/stores/appStore

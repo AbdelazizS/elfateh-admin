@@ -39,7 +39,7 @@ defineProps<DataTableColumnHeaderProps>()
           size="sm"
           class="-ml-3 h-8 data-[state=open]:bg-accent"
         >
-          <span>{{ title }}</span>
+          <span>{{ $t(title) }}</span>
           <ArrowDown v-if="column.getIsSorted() === 'desc'" class="w-4 h-4 ms-1" />
           <ArrowUp v-else-if=" column.getIsSorted() === 'asc'" class="w-4 h-4 ms-1" />
         </Button>

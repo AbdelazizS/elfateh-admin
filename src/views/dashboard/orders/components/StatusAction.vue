@@ -5,7 +5,7 @@
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="sm">
           <ClipboardPenLineIcon class="h-6 w-8" />
-          {{ props.item.ID }}
+          {{ props.item.Order_Status }}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
@@ -134,7 +134,7 @@ import { defineRule } from 'vee-validate'
 import { ClipboardPenLineIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
 import { useAuthStore } from '@/stores/authStore'
-import { useOrdersStore } from '@/stores/categoriesStore'
+import { useOrdersStore } from '@/stores/appStore'
 import { useToast } from '@/components/ui/toast/use-toast'
 import Loader from '@/components/Loader.vue'
 
@@ -156,12 +156,10 @@ const schema = {
 const handelUpdate = (values) => {
   const token = authStore.token
 
-  console.log(values)
 
   loading.value = true
   updateOrder({ order_id: props.item.ID, status_id: values.status_id, token })
     .then((res) => {
-      console.log(res)
       loading.value = false
       if (res.data.succNum === 200) {
         ordersStore.getItems(token)
@@ -173,7 +171,6 @@ const handelUpdate = (values) => {
       }
     })
     .catch((error) => {
-      console.log(error)
 
       loading.value = false
       if (!error.response) {

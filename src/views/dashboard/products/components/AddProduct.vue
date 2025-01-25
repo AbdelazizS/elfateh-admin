@@ -165,7 +165,7 @@ import { onMounted, ref, watch } from 'vue'
 import BaseInput from '@/components/BaseInput.vue'
 import FileInput from '@/components/fileInput.vue'
 import { useAuthStore } from '@/stores/authStore'
-import { useCategoriesStore, useProductsStore } from '@/stores/categoriesStore'
+import { useCategoriesStore, useProductsStore } from '@/stores/appStore'
 import { useToast } from '@/components/ui/toast/use-toast'
 import { useRouter } from 'vue-router'
 import Loader from '@/components/Loader.vue'
@@ -190,21 +190,20 @@ const schema = {
 }
 
 onMounted(() => {
-  categoriesStore.getItems()
+  categoriesStore.getItems(authStore.token)
 })
 
 function previewFile() {
-  var preview = document.querySelector('img')
-  var file = document.querySelector('input[type=file]').files[0]
-  var reader = new FileReader()
+  const preview = document.querySelector('img')
+  const file = document.querySelector('input[type=file]').files[0]
+  const reader = new FileReader()
 
-  reader.onloadend = function () {
+  reader.onloadend =  () =>  {
     form.value.image = reader.result
   }
 
   if (file) {
     reader.readAsDataURL(file)
-    console.log(reader)
   } else {
     preview.src = ''
   }
@@ -218,10 +217,9 @@ const handelAdd = (values) => {
   loading.value = true
   addProduct({ ...values, token, category_id: Item.ID })
     .then((res) => {
-      console.log(res)
       loading.value = false
       if (res.data.succNum === 200) {
-        productsStore.getItems()
+        productsStore.getItems(authStore.token)
         toast({
           title: 'add_data_success',
           success: true,
@@ -229,9 +227,7 @@ const handelAdd = (values) => {
         })
       }
     })
-    .catch((error) => {
-      console.log(error);
-      
+    .catch((error) => {      
       loading.value = false
       if (!error.response) {
         toast({

@@ -21,10 +21,9 @@ import { columns } from './components/columns.ts'
 import DataTable from './components/DataTable.vue'
 import Loader from '@/components/Loader.vue'
 import { Skeleton } from '@/components/ui/skeleton'
-import { useUsersStore } from '@/stores/categoriesStore.js'
+import { useUsersStore } from '@/stores/appStore.js'
 import { useAuthStore } from '@/stores/authStore'
 
-const data = ref([])
 const authStore = useAuthStore()
 
 const usersStore = useUsersStore()

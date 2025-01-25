@@ -40,7 +40,8 @@ import {
     </div> -->
     <div class="flex items-center">
       <div class="flex items-center gap-2">
-        <p class="text-sm font-medium">عدد العناصر خلال الصفحة</p>
+        <p class="text-sm font-medium">{{
+          $t('number_of_elements')}}</p>
         <Select
           :model-value="`${table.getState().pagination.pageSize}`"
           @update:model-value="table.setPageSize"
@@ -60,7 +61,7 @@ import {
         </Select>
       </div>
       <div class="flex items-center justify-center text-sm font-medium mx-8">
-        الصفحة {{ table.getState().pagination.pageIndex + 1 }} من
+       {{  $t('page')}} {{ table.getState().pagination.pageIndex + 1 }}  {{  $t('of')}}
         {{ table.getPageCount() }}
       </div>
       <div class="flex items-center space-x-2">
