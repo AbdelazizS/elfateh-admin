@@ -7,10 +7,6 @@ export const instance = axios.create({
   baseURL: baseURL
 })
 
-
-
-
-
 /*
  *   Products-API's
  */
@@ -30,7 +26,7 @@ export const addProduct = ({
   formData.append('product_price', product_price)
   formData.append('product_price_old', product_price_old)
   formData.append('image', image)
-  formData.append('token',token)
+  formData.append('token', token)
 
   return new Promise((resolve, reject) => {
     instance
@@ -108,7 +104,7 @@ export const getProducts = (token) => {
     instance
       // product_category
       .post('products', {
-        token:token
+        token: token
       })
       .then((resp) => {
         resolve(resp)
@@ -119,14 +115,9 @@ export const getProducts = (token) => {
   })
 }
 
-
-
-
-
 /*
  *   Notifications-API's
  */
-
 
 export const addNotification = ({ title, Notification, user_id, token }) => {
   return new Promise((resolve, reject) => {
@@ -166,17 +157,15 @@ export const updateNotification = ({ Notification, title, id, token }) => {
 }
 
 export const deleteNotification = ({ token, id }) => {
-
   return new Promise((resolve, reject) => {
     instance
       .post(`messages/delete/${id}`, {
-        token:token
+        token: token
       })
       .then((resp) => {
         resolve(resp)
       })
       .catch((error) => {
-
         reject(error)
       })
   })
@@ -198,23 +187,18 @@ export const getNotifications = (token) => {
   })
 }
 
-
 /*
  *   Delivery-API's
  */
 
-
-
-export const addDeliveryBoy = ({ token , transportation_type, note, image, name, email }) => {
+export const addDeliveryBoy = ({ token, transportation_type, note, image, name, email }) => {
   const formData = new FormData()
   formData.append('name', name)
   formData.append('image', image)
   formData.append('transportation_type', transportation_type)
   formData.append('note', note)
   formData.append('phone', email)
-  formData.append(
-    'token',token
-  )
+  formData.append('token', token)
 
   return new Promise((resolve, reject) => {
     instance
@@ -233,17 +217,14 @@ export const addDeliveryBoy = ({ token , transportation_type, note, image, name,
   })
 }
 
-export const updateDeliveryBoy = ({ token,id, transportation_type, note, image, name, email }) => {
-
+export const updateDeliveryBoy = ({ token, id, transportation_type, note, image, name, email }) => {
   const formData = new FormData()
   formData.append('name', name)
   formData.append('image', image)
   formData.append('transportation_type', transportation_type)
   formData.append('note', note)
   formData.append('phone', email)
-  formData.append(
-    'token',token
-  )
+  formData.append('token', token)
 
   return new Promise((resolve, reject) => {
     instance
@@ -263,17 +244,15 @@ export const updateDeliveryBoy = ({ token,id, transportation_type, note, image, 
 }
 
 export const deleteDeliveryBoy = ({ token, id }) => {
-
   return new Promise((resolve, reject) => {
     instance
       .post(`delivery/delete/${id}`, {
-        token:token
+        token: token
       })
       .then((resp) => {
         resolve(resp)
       })
       .catch((error) => {
-
         reject(error)
       })
   })
@@ -284,7 +263,7 @@ export const getDeliveryBoys = (token) => {
     instance
       // product_category
       .post('delivery', {
-        token:token
+        token: token
       })
       .then((resp) => {
         resolve(resp)
@@ -366,23 +345,20 @@ export const getOrders = (token) => {
   })
 }
 
-
 /*
  *   Users-API's
  */
 
 export const deleteUser = ({ token, id }) => {
-
   return new Promise((resolve, reject) => {
     instance
       .post(`user_management/clients/delete/${id}`, {
-        token:token
+        token: token
       })
       .then((resp) => {
         resolve(resp)
       })
       .catch((error) => {
-
         reject(error)
       })
   })
@@ -444,7 +420,6 @@ export const getUsers = (token) => {
       )
       .then((resp) => {
         resolve(resp)
-        
       })
       .catch((error) => {
         reject(error)
@@ -515,7 +490,6 @@ export const updateCategory = ({ id, name, token, image }) => {
 }
 
 export const deleteCategory = ({ token, id }) => {
-
   return new Promise((resolve, reject) => {
     instance
       .post(`settings/categories/delete/${id}`, {
@@ -538,14 +512,12 @@ export const getCategories = (token) => {
       })
       .then((resp) => {
         resolve(resp)
-        
       })
       .catch((error) => {
         reject(error)
       })
   })
 }
-
 
 /*
  *  Auth-API's
@@ -555,7 +527,6 @@ export const Login = (payload) => {
     instance
       .post('login', payload)
       .then((resp) => {
-
         resolve(resp)
         if (resp.status === true) {
           const token = resp.data.auth_token
@@ -568,42 +539,39 @@ export const Login = (payload) => {
   })
 }
 
-export const register = (payload) => {
+export const register = ({ name, email, password, password_Confirmation }) => {
   return new Promise((resolve, reject) => {
-    try {
-      instance
-        .post('register', payload)
-        .then((resp) => {
-          resolve(resp.data)
-        })
-        .catch((error) => {
-          reject(error)
-        })
-    } catch (err) {
-      reject(new Error(err))
-    }
+    instance
+      .post('register', {
+        Name: name,
+        email,
+        password,
+        password_confirmation: password_Confirmation
+      })
+      .then((resp) => {
+        resolve(resp)
+      })
+      .catch((error) => {
+        reject(error)
+      })
   })
 }
 
-export const verify = (url, payload) => {
+export const verify = (payload) => {
   return new Promise((resolve, reject) => {
-    try {
       instance
-        .post(url, payload)
+        .post('verify_email', payload)
         .then((resp) => {
           resolve(resp.data)
         })
         .catch((error) => {
           reject(error)
         })
-    } catch (err) {
-      reject(new Error(err))
-    }
+
   })
 }
 export const ForgotPassword = (payload) => {
   return new Promise((resolve, reject) => {
-    try {
       instance
         .post('resend_verify', payload)
         .then((resp) => {
@@ -612,31 +580,25 @@ export const ForgotPassword = (payload) => {
         .catch((error) => {
           reject(error)
         })
-    } catch (err) {
-      reject(new Error(err))
-    }
+
   })
 }
 
 export const ResetPassword = (payload) => {
   return new Promise((resolve, reject) => {
-    try {
       instance
-        .post('ResetPassword', payload)
+        .post('forget_password', payload)
         .then((resp) => {
           resolve(resp.data)
         })
         .catch((error) => {
           reject(error)
         })
-    } catch (err) {
-      reject(new Error(err))
-    }
+
   })
 }
 export const UpdatePassword = (payload) => {
   return new Promise((resolve, reject) => {
-    try {
       instance
         .post('UpdatePassword', payload)
         .then((resp) => {
@@ -645,8 +607,6 @@ export const UpdatePassword = (payload) => {
         .catch((error) => {
           reject(error)
         })
-    } catch (err) {
-      reject(new Error(err))
-    }
+
   })
 }

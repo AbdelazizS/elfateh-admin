@@ -15,7 +15,7 @@ const router = createRouter({
       
     },
     {
-      path: '/login',
+      path: '/auth/login',
       name: 'login',
       component: () => import('@/views/auth/Login.vue'),
       meta: {
@@ -24,7 +24,7 @@ const router = createRouter({
       } as RouteMeta & IRouteMeta,
     },
     {
-      path: '/register',
+      path: '/auth/register',
       name: 'register',
       component: () => import('@/views/auth/Register.vue'),
       meta: {
@@ -33,12 +33,21 @@ const router = createRouter({
       } as RouteMeta & IRouteMeta,
     },
     {
-      path: '/verify',
+      path: '/auth/verify',
       name: 'verify',
       component: () => import('@/views/auth/Verify.vue'),
       meta: {
        
         title: 'verify',
+      } as RouteMeta & IRouteMeta,
+    },
+    {
+      path: '/auth/forgot-password',
+      name: 'ForgotPassword',
+      component: () => import('@/views/auth/ForgotPassword.vue'),
+      meta: {
+       
+        title: 'ForgotPassword',
       } as RouteMeta & IRouteMeta,
     },
     {
