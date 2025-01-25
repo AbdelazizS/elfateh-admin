@@ -1,0 +1,164 @@
+{
+  "dashboard":"Dashboard",
+  "logotxt": "Elfatef",
+  "home_page": "Home",
+  "submit": "submit",
+  "change_theme": "Change Theme",
+  "cancel": "cancel",
+  "back": "back",
+  "or": "or",
+  "download_now": "Download Now",
+  "notifications": "Notifications",
+  "network_error": "Network Error ! please check your connection",
+  "total": "Total Price",
+  "verify_your_email": "Verify your email address",
+  "home": {
+    "nav": {
+      "light": "light",
+      "dark": "dark",
+      "arabic": "Arabic",
+      "english": "English",
+      "sign_up": "Create Account",
+      "sign_out": "Log out",
+      "sign_in": "Log In",
+      "my_account": "My Account",
+      "profile": "Profile",
+      "favourites": "Favourites",
+      "notifications": "Notifications"
+    },
+
+    "hero": {
+      "save": "Save Up to",
+      "save_perc": "15%",
+      "one_stop": "One-Stop",
+      "electronic": "Electronic",
+      "market": "Market",
+      "description": "description"
+    },
+    "offers": {
+      "discounts": "Discounts",
+      "offer-name": "Winter Sale",
+      "offer-discount": "30% OFF",
+      "offer-title": "Fine Smile",
+      "offer-date": "10 Jan to 28 Jan",
+      "offer-description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio illo debitis quam.",
+
+      "offer-product-title": "Nvidia Ms11 Pc",
+      "up_to": "Up to"
+    },
+    "cta": {
+      "title": "Let's create more tools and ideas that brings us together.",
+      "description": "Flowbite helps you connect with friends and communities of people who share your interests. Connecting with your friends and family as well as discovering new"
+    },
+    "footer": {
+      "services": "Services",
+      "company": "Company",
+      "platform": "Platform",
+      "additional": "Additional",
+      "support": "Support",
+      "about_us": "About Us",
+      "terms_conditions": "Terms & Conditions",
+      "careers": "Careers",
+      "contact_us": "Contact Us",
+      "partners": "Partners",
+      "rights": "All Rights Reserves"
+    },
+    "get_it_now": "Get it Now",
+
+    "categories": "Shop by Category",
+    "categories_desc": "Discover multiple options in each category",
+    "products": "Featured Products",
+    "shop_now": "Shop Now",
+    "add_to_cart": "Add to Cart"
+  },
+  "search": {
+    "items_amount": "{amount} Items Founded",
+    "single_item": "one Item Founded",
+    "no_match": "No Results Matches ",
+    "found": "found"
+  },
+  "auth": {
+    "verify_email": "Email Verification",
+    "reset_password": "Reset Your Password",
+    "reset_password_desc": "Enter the new password and confirm the new password to update your account",
+    "reset_code_sended": "An email containing the reset code has just been sent to your email",
+    "check_inbox": "Check Your Inbox",
+    "code_sended": "code sended successfully to your email",
+    "password_reseted_success": "password reseted successfully",
+    "forgot_password": "Forgot Password",
+    "forgot_password_desc": "Enter your email address and we'll send you an email message with send you a code to reset your password.",
+    "name_placeholder": "Enter your name",
+    "password_placeholder": "Enter your own password ",
+    "passwordConfirm_placeholder": "confirm password your",
+    "register_success": "You have been successfully registered",
+    "redirect_to_verify": "Redirecting you to verification page",
+    "redirect_to_home": "Redirecting you to home page",
+    "redirect_to_login": "Redirecting you to login page",
+    "account_not_exist": "this account is not exist",
+    "email_or_password_error": "wrong password or email",
+    "emailUsed": "this email is already used",
+    "verify_account_first": "please , verify your email before login",
+    "login_title": "Log in to your account",
+    "login_success": "You have been logged in successfully",
+    "logout_success": "You have been logged out successfully",
+    "verified_success": "Email verified successfully",
+    "unValidCode": "wrong code , please enter the correct code",
+    "register_title": "create your new account",
+    "havenot_account": "Don't have an account?",
+    "have_account": "have an account?",
+    "email": "Email Address",
+    "name": "User Name",
+    "password": "Password",
+    "requireAuth": "Please Login First to Enjoy this feature",
+    "confirm_password": "Password Confirmation",
+    "required": "this field is required",
+    "email_error": "please enter valid email address",
+    "match_error": "password confirmation doesn't match password",
+    "too_short": "this field is too short",
+    "too_long": "this field is too long",
+    "alpha_spaces": "this field should contain only letters",
+    "strong_password": "Your password must be at least 8 characters long, contain at least one number, one of the special characters, and a combination of upper and lower case letters.",
+    "passwordConf_err": "password does not match"
+  },
+  "product_details": {
+    "related_products": "Related Products",
+    "reviews": "Reviews",
+    "customers_reviews": "Customers Reviws",
+    "specifications": "Specifications",
+    "product_specifications": "Product Specifications",
+    "read_all": "Read all Reviews"
+  },
+  "shopping_cart": {
+    "title": "Shopping Cart",
+    "added_success": "Product Added to Cart Successfully",
+    "removed_success": "Product Removed from Cart Successfully",
+    "added_to_fav": "Product Added to Favourites Successfully",
+    "removed_from_fav": "Product Removed from Favourites Successfully",
+    "order_summary": "Order Summary",
+    "continue_shopping": "Continue Shopping",
+    "total": "Total",
+    "shipping": "Shipping",
+    "checkout": "Proceed to Checkout",
+    "original_price": "Original Price",
+    "your_cart": "Your Cart is",
+    "empty_cart_desc": "You can add products to your shopping cart, either by searching or browsing products",
+    "empty": "Empty"
+  },
+  "profile": {
+    "update_password": "Update Password",
+    "personal_info": "Personal Info",
+    "settings&data": "Website Settings & Data"
+  },
+  "orders": {
+    "orders": "Orders",
+    "order_id": "Order Id",
+    "status": "Status",
+    "order_added": "order added successfully",
+    "products": "Products",
+    "confirmed": "Confirmed",
+    "order_details": "Order Details"
+  },
+  "category": {
+    "products": "Products"
+  }
+}
