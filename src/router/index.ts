@@ -11,7 +11,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: '/dashboard/home',
+      redirect: '/',
       
     },
     {
@@ -54,7 +54,7 @@ const router = createRouter({
       path: '/dashboard',
       
       component: DashboardLayoutVue,
-      redirect: '/dashboard/home',
+      redirect: '/',
       meta: {
         requiresAuth:true,
         title: 'dashboard',
