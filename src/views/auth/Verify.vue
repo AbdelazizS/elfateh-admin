@@ -1,7 +1,7 @@
 <template>
     <Loader v-if="loading" />
   <div class="heroBg Verify">
-    <div class="py-16 md:py-24">
+    <div class="py-16 md:py-24 p-4">
       <div class="flex flex-col">
         <div class="text-center">
           <img src="../../assets/images/logo.png" class="fade-up mx-auto h-24 w-24" />
@@ -12,7 +12,7 @@
             <p class="fade-up text-muted-foreground w-full md:max-w-lg mx-auto">
               We are glad, that you’re with us ? We’ve sent you a verification link to the email
               address
-              <span class="font-medium text-indigo-500">{{ email.value }}</span>
+              <span class="font-medium text-indigo-500">{{ email }}</span>
             </p>
           </div>
         </div>
@@ -64,12 +64,14 @@ import { ref } from 'vue'
 import { Button } from '@/components/ui/button'
 import { required } from '@vee-validate/rules'
 import { useRouter } from 'vue-router'
-import { onBeforeMount } from 'vue'
+import { onMounted } from 'vue'
 import { verify } from '@/services/api.js'
 import { useToast } from '@/components/ui/toast/use-toast'
 
 defineRule('required', required)
-onBeforeMount(() => {
+onMounted(() => {
+  console.log(router.options.history.state.email);
+  
   email.value = router.options.history.state.email
 })
 
@@ -113,6 +115,8 @@ const onSubmit = () => {
       email:email.value
     })
       .then((response) => {
+        console.log(response);
+        
         if (response.status === true) {
           toast({
             title: 'auth.verified_success',
@@ -132,6 +136,8 @@ const onSubmit = () => {
         } 
       })
       .catch((error) => {
+        console.log(error);
+        
         
         loading.value = false
         if (error.status === 400) {

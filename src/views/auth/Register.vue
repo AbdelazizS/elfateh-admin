@@ -132,11 +132,12 @@ const onSubmit = async (values) => {
 
       <div className="relative z-20 mt-auto">
         <blockquote className="space-y-2">
-          <footer className="text-sm">2024 EtooPlay &copy;</footer>
+          <footer className="text-sm">
+            {{new Date().getFullYear()}} EtooPlay &copy;</footer>
         </blockquote>
       </div>
     </div>
-    <div className="lg:p-8">
+    <div className="p-4 lg:p-8">
       <div class="flex flex-col justify-center py-8 mb-8">
         <div class="text-center">
           <img src="../../assets/images/logo.png" class="fade-up mx-auto h-auto w-28" />

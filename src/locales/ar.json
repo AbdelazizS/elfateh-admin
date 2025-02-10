@@ -9,9 +9,12 @@
   "add_new_category": "أضف تصنيفا جديدا",
   "page": "الصفحة",
   "of": "من",
+  "quantity": "الكمية",
   "Transportation_Cost":"سعر التوصيل",
+  "Transportation_Cost_1":" سعر التوصيل للمنتج",
   "Delivery_Boy":"كابتن التوصيل",
   "Location":" الموقع",
+  "prominent_place":"موقع بارز",
   "Order_Status":" حالة الطلب",
   "category_name": "إسم الفئة",
   "Client_Name": "إسم العميل",
@@ -19,6 +22,12 @@
 
 
 
+    "Open":"تم الاستلام",
+     "Completed":"تم التسليم",
+     "In Progress":"قيد المعالجة",
+
+
+  "product_id":"الid الخاص بالمنتج",
   "user_name": "إسم المستخدم",
   "phone": "رقم الهاتف ",
 
@@ -76,7 +85,7 @@
 
   "logotxt": "الفاتح",
   "home_page": "الصفحة الرئيسية",
-  "total": "الإجمالي",
+  "total": "السعر الكلي",
   "network_error": "خطأ في الشبكة  الرجاء التحقق من اتصالك",
   "favourites": "المفضلة",
   "no_favourites": "لم تقم باضافة أي عناصر الى المفضلة",
@@ -86,13 +95,15 @@
   "empty_notifications__desc": "سيتم إخطارك بمجرد قدوم إشعارات جديد",
   "back": "رجوع",
   "download_now": "تنزيل الأن",
-  "verify_your_email": "قم بتاكيد البريد الالكتروني الخاص بك",
 
   "submit": "تأكيد",
   "or": "أو",
 
 
   "auth": {
+
+  "verify_your_email": "قم بتاكيد البريد الالكتروني الخاص بك",
+
     "only_numbers": "قم بادخال ارقام فقط",
     "verify_email": "تأكيد البريد الإلكتروني",
     "logout_success": "تم تسجيل الخروج بنجاح",
@@ -150,6 +161,8 @@
     "add_new": "أضف طلبا جديدا",
     "add_description": "أدخل بيانات الطلب , ثم أضغط زر أضف الطلب",
     "add_order": "أضف الطلب",
+    "state": "الولاية",
+    "locality": "المقاطعة",
     "edit_status": "تعديل حالة الطلب الطلب",
     "_status": "حالة الطلب",
     "confirm_edit_status": "تعديل حالة الطلب بعد اضافة كابتن توصيل معين َ!",

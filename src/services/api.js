@@ -1,11 +1,51 @@
 import axios from 'axios'
 
 const host = import.meta.env.VITE_BASE_API_URL
+const STORE_BASE_URL = import.meta.env.VITE_BASE_URL
 const baseURL = `${host}`
 
 export const instance = axios.create({
   baseURL: baseURL
 })
+
+/*
+ *   States-API's
+ */
+
+export const getStates = () => {
+  return new Promise((resolve, reject) => {
+    axios
+      // product_category
+      .post(`${STORE_BASE_URL}get_states`)
+      .then((resp) => {
+        resolve(resp)
+      })
+      .catch((error) => {
+        reject(error)
+      })
+  })
+}
+
+/*
+ *   Localities-API's
+ */
+
+export const getLocalities = (state_id) => {
+  return new Promise((resolve, reject) => {
+    axios
+      // product_category
+
+      .post(`${STORE_BASE_URL}get_localities`, {
+        state_id
+      })
+      .then((resp) => {
+        resolve(resp)
+      })
+      .catch((error) => {
+        reject(error)
+      })
+  })
+}
 
 /*
  *   Products-API's
@@ -275,18 +315,45 @@ export const getDeliveryBoys = (token) => {
 }
 
 // Orders-API's
-export const addOrder = () => {
+export const addOrder = ({
+  client_id,
+  total_price,
+  transportation_cost,
+  location,
+  prominent_place,
+  locality_id,
+  state_id,
+  product_id,
+  product_name,
+  product_price,
+  quantity,
+  product_transportation_cost,
+  token
+}) => {
+
   return new Promise((resolve, reject) => {
     instance
       // product_category
-      .get('orders/add', {
-        product_name: '',
-        product_description: '',
-        category_id: '',
-        product_price: '',
-        product_price_old: '',
-        image: '',
-        token: localStorage.getItem('access_token')
+      .post('orders_add', {
+        client_id,
+        total_price,
+        transportation_cost,
+        location,
+        prominent_place,
+        state_id,
+        locality_id,
+        type: '1',
+        platform: '1',
+        order_details: [
+          {
+            product_id,
+            product_name,
+            product_price,
+            quantity,
+            transportation_cost: product_transportation_cost
+          }
+        ],
+        token
       })
       .then((resp) => {
         resolve(resp)
@@ -559,54 +626,50 @@ export const register = ({ name, email, password, password_Confirmation }) => {
 
 export const verify = (payload) => {
   return new Promise((resolve, reject) => {
-      instance
-        .post('verify_email', payload)
-        .then((resp) => {
-          resolve(resp.data)
-        })
-        .catch((error) => {
-          reject(error)
-        })
-
+    instance
+      .post('verify_email', payload)
+      .then((resp) => {
+        resolve(resp.data)
+      })
+      .catch((error) => {
+        reject(error)
+      })
   })
 }
 export const ForgotPassword = (payload) => {
   return new Promise((resolve, reject) => {
-      instance
-        .post('resend_verify', payload)
-        .then((resp) => {
-          resolve(resp.data)
-        })
-        .catch((error) => {
-          reject(error)
-        })
-
+    instance
+      .post('forget_password', payload)
+      .then((resp) => {
+        resolve(resp.data)
+      })
+      .catch((error) => {
+        reject(error)
+      })
   })
 }
 
 export const ResetPassword = (payload) => {
   return new Promise((resolve, reject) => {
-      instance
-        .post('forget_password', payload)
-        .then((resp) => {
-          resolve(resp.data)
-        })
-        .catch((error) => {
-          reject(error)
-        })
-
+    instance
+      .post('reset_password', payload)
+      .then((resp) => {
+        resolve(resp.data)
+      })
+      .catch((error) => {
+        reject(error)
+      })
   })
 }
 export const UpdatePassword = (payload) => {
   return new Promise((resolve, reject) => {
-      instance
-        .post('UpdatePassword', payload)
-        .then((resp) => {
-          resolve(resp)
-        })
-        .catch((error) => {
-          reject(error)
-        })
-
+    instance
+      .post('UpdatePassword', payload)
+      .then((resp) => {
+        resolve(resp)
+      })
+      .catch((error) => {
+        reject(error)
+      })
   })
 }

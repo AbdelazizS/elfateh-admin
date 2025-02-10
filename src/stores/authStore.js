@@ -26,7 +26,6 @@ export const useAuthStore = defineStore('auth', () => {
           password: payload.password,
         })
           .then((response) => {
-            console.log(response);
             
             if (response.data.user) {
               const userInfo = response.data.user

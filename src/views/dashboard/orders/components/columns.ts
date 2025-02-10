@@ -19,18 +19,25 @@ export const columns: ColumnDef<product>[] = [
   {
     accessorKey: 'Client_Name',
     header: () => h(TransLate, { item: { key: 'Client_Name' } })
-    
   },
   {
     accessorKey: 'Date',
     header: () => h(TransLate, { item: { key: 'Date' } }),
-    cell: (info) => new Date(info.getValue()).toLocaleString()
+    cell: (info) =>
+      new Date(info.getValue()).toLocaleString(undefined, {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        weekday: 'long',
+        hour: '2-digit',
+        minute: '2-digit'
+      })
   },
-  { accessorKey: 'Delivery_Boy',
-
+  {
+    accessorKey: 'Delivery_Boy',
 
     header: () => h(TransLate, { item: { key: 'Delivery_Boy' } })
-   },
+  },
   {
     accessorKey: 'Location',
     header: () => h(TransLate, { item: { key: 'Location' } })

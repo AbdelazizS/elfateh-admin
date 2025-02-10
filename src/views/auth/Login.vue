@@ -21,7 +21,6 @@ onBeforeMount(() => {
   // }
 
   form.value.email = router.options.history.state.email
-  console.log(router)
 })
 
 const loading = ref(false)
@@ -63,6 +62,9 @@ const onSubmit = (values) => {
       }
       if (response.data.errNum === 'E001') {
         errorMsg.value = 'email_or_password_error'
+      }
+      if (response.data.errNum === 'E002') {
+        errorMsg.value = 'verify_your_email'
       }
       console.log(response)
     })
@@ -125,12 +127,12 @@ const onSubmit = (values) => {
         
 
         <blockquote className="space-y-2">
-          <footer className="text-sm">2024 EtooPlay &copy;</footer>
+          <footer className="text-sm">{{new Date().getFullYear()}} EtooPlay &copy;</footer>
         </blockquote>
       </div>
     </div>
     <div className="lg:p-8">
-      <div class="flex flex-col justify-center py-8 mb-8">
+      <div class="flex flex-col justify-center py-8 mb-8 p-4">
         <div class="text-center">
           <img src="../../assets/images/logo.png" class="fade-up mx-auto h-auto w-28" />
           <div class="mt-5 space-y-2">

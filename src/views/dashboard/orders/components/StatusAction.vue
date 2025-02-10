@@ -5,7 +5,30 @@
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="sm">
           <ClipboardPenLineIcon class="h-6 w-8" />
-          {{ props.item.Order_Status }}
+
+          <Badge v-if="props.item.Order_Status === 'Not Available'" variant="danger">
+            {{ $t(props.item.Order_Status) }}
+          </Badge>
+          <Badge v-if="props.item.Order_Status === 'Completed'" variant="success">
+            {{ $t(props.item.Order_Status) }}
+          </Badge>
+          <Badge v-if="props.item.Order_Status === 'Open'" variant="outline">
+            {{ $t(props.item.Order_Status) }}
+          </Badge>
+          <Badge v-if="props.item.Order_Status === 'In Progress'" variant="warning">
+            {{ $t(props.item.Order_Status) }}
+          </Badge>
+
+          <!-- "Open":"Open",
+  "Completed":"completed",
+  "In Progress":"in Progress", -->
+          <!-- <Badge v-if="props.item.Order_Status === 'Not Available'" variant="destructive">
+            {{ $t(props.item.Order_Status) }}
+          </Badge>
+          <Badge v-if="props.item.Order_Status === 'Not Available'" variant="destructive">
+            {{ $t(props.item.Order_Status) }}
+          </Badge> -->
+          
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
@@ -49,11 +72,11 @@
                         status_id: '1'
                       },
                       {
-                        status: 'in Progress',
+                        status: 'In Progress',
                         status_id: '2'
                       },
                       {
-                        status: 'completed',
+                        status: 'Completed',
                         status_id: '3'
                       }
                     ]"
@@ -61,7 +84,7 @@
                     :item="item"
                     :value="item.status_id"
                   >
-                    {{ item.status }}
+                    {{ $t(item.status) }}
                   </SelectItem>
                 </SelectGroup>
               </SelectContent>
@@ -137,6 +160,7 @@ import { useAuthStore } from '@/stores/authStore'
 import { useOrdersStore } from '@/stores/appStore'
 import { useToast } from '@/components/ui/toast/use-toast'
 import Loader from '@/components/Loader.vue'
+import Badge from '@/components/ui/badge/Badge.vue'
 
 defineRule('required', required)
 

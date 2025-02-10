@@ -2,7 +2,7 @@
   <div className="">
     <div className="flex items-start justify-between mb-4 ">
       <Heading :title="$t('orders')" :description="$t('orders_page.orders_page_description')" />
-      <!-- <AddOrder /> -->
+      <AddOrder />
     </div>
     <DataTable v-if="ordersStore.Items?.length" :data="ordersStore.Items" :columns="columns" />
     <div v-else class="h-screen">
@@ -16,7 +16,7 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import Heading from '@/components/heading.vue'
-// import AddOrder from './components/AddOrder.vue'
+import AddOrder from './components/AddOrder.vue'
 import { columns } from './components/columns.ts'
 import DataTable from './components/DataTable.vue'
 import Loader from '@/components/Loader.vue'

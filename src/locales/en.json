@@ -13,15 +13,25 @@
   "verify_your_email": "Verify your email address",
   "add_new": "Add ",
   "of": "of",
+  "quantity": "quantity",
   "number_of_elements": "The number of elements on the page",
 
   "arabic": "Arabic",
   "english": "English",
 
+
+  "Open":"Open",
+  "Completed":"completed",
+  "In Progress":"in Progress",
+
+  
+  "product_id": "Product id",
   "category_name": "Category name",
   "Transportation_Cost":"Transportation Cost",
+  "Transportation_Cost_1":"Product Transportation Cost",
   "Delivery_Boy":"Delivery Boy",
   "Location":"Location",
+  "prominent_place":"Prominent Place",
   "Order_Status":"Order Status",
   "Client_Name": "Client Name",
   "Date": "Date",
@@ -131,6 +141,8 @@
     "add_order": "Add Order",
     "edit_status": "Modify the order status of the order",
     "_status": "order status",
+    "state": "State",
+    "locality": "Locality",
     "filter_orders_by_names": "Search for the customer name of a specific order",
     "confirm_edit_status": "Modifying the order status after adding a specific delivery captain !"
   },
