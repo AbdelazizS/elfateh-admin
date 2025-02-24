@@ -52,6 +52,8 @@
   "profile": "الملف الشخصي",
   "account": "حسابي",
   "orders": "الطلبات",
+  "offers": "العروض",
+  "banners": "بانرات الصفحة الرئيسية",
   "users": "المستخدمين",
   "delivery": "كباتن التوصيل",
   "settings": "الإعدادات",
@@ -168,6 +170,28 @@
     "confirm_edit_status": "تعديل حالة الطلب بعد اضافة كابتن توصيل معين َ!",
     "filter_orders_by_names": "البحث عن اسم العميل لطلب معين"
   },
+  "banners_page": {
+    "add_new": "أضف بانر جديدة",
+    "add_description": "أدخل بيانات البانر , ثم أضغط زر أضف الفئة",
+    "add_banner": "أضف البانر",
+    "banners_page_description": "تحكم في البانرات  قم باضافة وحذف بانرات معينة",
+    "banner_image": "صورة البانر",
+    "filter_category_by_names": "  إبحث عن إسم فئة معينة "
+  },
+
+  "offers_page": {
+
+    "offers_page_description": "تحكم في العروض  قم باضافة وحذف عروض معينة",
+    "add_new": "أضف عرضا جديدة",
+    "add_description": "أدخل بيانات العرض , ثم أضغط زر أضف العرض",
+    "add_offer": "أضف العرض",
+    "offer_name": "عنوان العرض",
+    "product_name": "إسم أو عنوان المنتج",
+    "offer_percent": "نسبة التخفيض",
+    "offer_description": "وصف العرض",
+    "offer_image":"صورة العرض"
+  },
+
   "categories_page": {
     "add_new": "أضف فئة جديدة",
     "add_description": "أدخل بيانات الفئة , ثم أضغط زر أضف الفئة",
@@ -175,7 +199,6 @@
     "categories_page_description": "تحكم في الفئات  قم باضافة وحذف فئات معينة",
     "category_name": "إسم أو عنوان الفئة",
     "category_image": "صورة الفئة",
-    
     "filter_category_by_names": "  إبحث عن إسم فئة معينة "
   },
   "users_page": {

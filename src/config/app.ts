@@ -6,24 +6,33 @@ interface IDashboardMenus {
   hidden?: boolean
 }
 
-export const SIDEBAR_EXPAND_WIDTH = 280;
-export const SIDEBAR_COLLAPSED_WIDTH = 72;
-export const APP_MENU: Record<string, { name: string, routes: IDashboardMenus[] }> = {
+export const SIDEBAR_EXPAND_WIDTH = 280
+export const SIDEBAR_COLLAPSED_WIDTH = 72
+export const APP_MENU: Record<string, { name: string; routes: IDashboardMenus[] }> = {
   main: {
     name: 'core',
     routes: [
       {
         title: 'dashboard',
         icon: 'LayoutDashboard',
-        path: 'home',
+        path: 'home'
+      }
+    ]
+  },
+  Home: {
+    name: 'home',
+    routes: [
+      {
+        title: 'banners',
+        icon: 'Image',
+        path: 'banners'
       },
-      // {
-      //   title: 'Tasks',
-      //   icon: 'ClipboardCheck',
-      //   path: 'task',
-      //   description: 'Manage Tasks'
-      // },
-    ],
+      {
+        title: 'offers',
+        icon: 'BadgePercent',
+        path: 'offers'
+      },
+    ]
   },
   settings: {
     name: 'general',
@@ -31,26 +40,23 @@ export const APP_MENU: Record<string, { name: string, routes: IDashboardMenus[] 
       {
         title: 'categories',
         icon: 'LayoutDashboard',
-        path: 'categories',
-        description: 'Manage Tasks'
+        path: 'categories'
       },
+
       {
         title: 'products',
         icon: 'BookUpIcon',
-        path: 'products',
-        description: 'Manage Tasks'
+        path: 'Products'
       },
       {
         title: 'users',
         icon: 'User',
-        path: 'users',
-        description: 'Manage Tasks'
+        path: 'users'
       },
       {
         title: 'notifications',
         icon: 'BellRing',
-        path: 'notifications',
-        description: 'Manage Tasks'
+        path: 'notifications'
       },
       {
         path: 'orders',
@@ -62,16 +68,11 @@ export const APP_MENU: Record<string, { name: string, routes: IDashboardMenus[] 
         path: 'delivery',
         title: 'delivery',
         icon: 'Settings2',
-        
+
         description: 'Settings'
-      },
-    ],
-  },
-
-
-  
-
-
+      }
+    ]
+  }
 
   // AP: {
   //   name: '',
@@ -84,8 +85,6 @@ export const APP_MENU: Record<string, { name: string, routes: IDashboardMenus[] 
   //     },
   //   ],
   // },
-};
+}
 
-export const globalSearch = {
-
-};
+export const globalSearch = {}

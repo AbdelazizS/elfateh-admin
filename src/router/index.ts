@@ -77,7 +77,24 @@ const router = createRouter({
           } as RouteMeta & IRouteMeta
         },
 
+        {
+          path: 'offers',
+          name: 'offers_index',
+          component: () => import('@/views/dashboard/offers/index.vue'),
+          meta: {
+            title: 'offers',
+          } as RouteMeta & IRouteMeta
+        },
         
+
+        {
+          path: 'banners',
+          name: 'banners_index',
+          component: () => import('@/views/dashboard/banners/index.vue'),
+          meta: {
+            title: 'banners',
+          } as RouteMeta & IRouteMeta
+        },
         {
           path: 'products',
           name: 'products_index',

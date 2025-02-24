@@ -67,7 +67,7 @@ const handleLogout = () => {
       <DropdownMenuLabel>{{ $t(`account`) }}</DropdownMenuLabel>
       <DropdownMenuSeparator />
       <DropdownMenuGroup class="space-y-.5">
-        <RouterLink to="/dashboard/profile">
+        <!-- <RouterLink to="/dashboard/profile">
           <DropdownMenuItem>
             <User class="me-2 h-4 w-4" />
             <span>{{ $t(`profile`) }}</span>
@@ -79,9 +79,9 @@ const handleLogout = () => {
             <Settings class="me-2 h-4 w-4" />
             <span>{{ $t(`settings`) }}</span>
           </DropdownMenuItem>
-        </RouterLink>
+        </RouterLink> -->
       </DropdownMenuGroup>
-      <DropdownMenuSeparator />
+      <!-- <DropdownMenuSeparator /> -->
       <DropdownMenuItem @click="handleLogout">
         <LogOut class="me-2 h-4 w-4" />
         <span>{{ $t(`sign_out`) }}</span>

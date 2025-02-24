@@ -47,6 +47,8 @@
   "products": "Products",
   "profile": "Profile",
   "account": "Account",
+  "offers": "Offers",
+  "banners": "Banners",
   "orders": "Orders",
   "users": "Users",
   "delivery": "Delivery Boys",
@@ -78,6 +80,25 @@
   "delete_data_success": "The data has been deleted successfully",
   "update_data_description": "Modify the data, then click the Save Changes button",
 
+  "banners_page": {
+    "banners_page_description": "Control banners, add and delete specific banner",
+    "add_new": "Add a new banner",
+    "add_description": "Enter the banner data, then click the Add Banner button",
+    "add_banner": "Add Banner",
+    "banner_image": "Banner image"
+  },
+
+  "offers_page": {
+    "offers_page_description": "Control offers, add and delete specific offer",
+    "add_new": "Add a new offer",
+    "add_description": "Enter the offer data, then click the Add Offer button",
+    "add_offer": "Add Offer",
+    "offer_name": "Offer Name",
+    "product_name": "Product Name",
+    "offer_percent": "Discount Percent ",
+    "offer_description": "Offer description",
+    "offer_image": "Offer image"
+  },
   "categories_page": {
     "categories_page_description": "Control categories, add and delete specific categories",
     "add_new": "Add a new category",
