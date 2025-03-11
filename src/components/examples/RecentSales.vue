@@ -1,93 +1,39 @@
 <script setup lang="ts">
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+
+import { defineProps } from 'vue'
+
+const props = defineProps({
+  orders: {
+    type: Array,
+    required: true
+  }
+})
+
+console.log(props.orders)
 </script>
 
+// && order.status === 'completed'
 <template>
-  <div class="space-y-8 ">
-    <div class="flex items-center ">
-      <Avatar class="h-9 w-9">
+  <div class="space-y-8" v-if="props.orders.length">
+    <div
+      class="flex items-center"
+      v-for="order in props.orders
+        .filter((order) => order.Client_Name !== 'Not Available')
+        .slice(-6)"
+      :key="order.id"
+    >
+      <Avatar class="h-9 w-9 border border-primary/20">
         <AvatarImage src="/avatars/01.png" alt="Avatar" />
-        <AvatarFallback>OM</AvatarFallback>
+        <AvatarFallback class="font-bold">{{ order.Client_Name[0] }}</AvatarFallback>
       </Avatar>
-      <div class=" ms-4 space-y-1">
+      <div class="ms-4 space-y-1">
         <p class="text-sm font-medium leading-none">
-          Olivia Martin
+          {{ order.Client_Name }}
         </p>
-        <p class="text-sm text-muted-foreground">
-          olivia.martin@email.com
-        </p>
+        <p class="text-sm text-muted-foreground">olivia.martin@email.com</p>
       </div>
-      <div class=" ms-auto font-medium">
-        +$1,999.00
-      </div>
-    </div>
-    <div class="flex items-center">
-      <Avatar class="flex h-9 w-9 items-center justify-center space-y-0 border">
-        <AvatarImage src="/avatars/02.png" alt="Avatar" />
-        <AvatarFallback>JL</AvatarFallback>
-      </Avatar>
-      <div class=" ms-4 space-y-1">
-        <p class="text-sm font-medium leading-none">
-          Jackson Lee
-        </p>
-        <p class="text-sm text-muted-foreground">
-          jackson.lee@email.com
-        </p>
-      </div>
-      <div class="ms-auto font-medium">
-        +$39.00
-      </div>
-    </div>
-    <div class="flex items-center">
-      <Avatar class="h-9 w-9">
-        <AvatarImage src="/avatars/03.png" alt="Avatar" />
-        <AvatarFallback>IN</AvatarFallback>
-      </Avatar>
-      <div class=" ms-4 space-y-1">
-        <p class="text-sm font-medium leading-none">
-          Isabella Nguyen
-        </p>
-        <p class="text-sm text-muted-foreground">
-          isabella.nguyen@email.com
-        </p>
-      </div>
-      <div class=" ms-auto font-medium">
-        +$299.00
-      </div>
-    </div>
-    <div class="flex items-center">
-      <Avatar class="h-9 w-9">
-        <AvatarImage src="/avatars/04.png" alt="Avatar" />
-        <AvatarFallback>WK</AvatarFallback>
-      </Avatar>
-      <div class=" ms-4 space-y-1">
-        <p class="text-sm font-medium leading-none">
-          William Kim
-        </p>
-        <p class="text-sm text-muted-foreground">
-          will@email.com
-        </p>
-      </div>
-      <div class=" ms-auto font-medium">
-        +$99.00
-      </div>
-    </div>
-    <div class="flex items-center">
-      <Avatar class="h-9 w-9">
-        <AvatarImage src="/avatars/05.png" alt="Avatar" />
-        <AvatarFallback>SD</AvatarFallback>
-      </Avatar>
-      <div class=" ms-4 space-y-1">
-        <p class="text-sm font-medium leading-none">
-          Sofia Davis
-        </p>
-        <p class="text-sm text-muted-foreground">
-          sofia.davis@email.com
-        </p>
-      </div>
-      <div class=" ms-auto font-medium">
-        +$39.00
-      </div>
+      <div class="ms-auto font-medium">+$1,999.00</div>
     </div>
   </div>
 </template>

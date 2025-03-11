@@ -27,9 +27,7 @@ const props = defineProps<{
   data: TData[]
 }>()
 
-
 import Pagination from './pagination.vue'
-
 
 const sorting = ref([])
 const columnFilters = ref([])
@@ -59,21 +57,24 @@ const table = useVueTable({
 })
 </script>
 
-<template >
-  <Input
+<template>
+  <!-- <Input
   v-if="props?.data?.length" 
     class="max-w-sm mb-4"
     :placeholder="$t('categories_page.filter_category_by_names')"
     :model-value="table.getColumn('Category_name')?.getFilterValue()"
     @update:model-value="table.getColumn('Category_name')?.setFilterValue($event)"
-  />
+  /> -->
 
-  
-  <div  v-if="props?.data?.length"   class="border rounded-md">
+  <div v-if="props?.data?.length" class="border rounded-md">
     <Table>
       <TableHeader class="bg-primary/10 dark:bg-primary/5">
         <TableRow v-for="headerGroup in table.getHeaderGroups()" :key="headerGroup.id">
-          <TableHead class="rtl-dir text-foreground" v-for="header in headerGroup.headers" :key="header.id">
+          <TableHead
+            class="rtl-dir text-foreground"
+            v-for="header in headerGroup.headers"
+            :key="header.id"
+          >
             <FlexRender
               v-if="!header.isPlaceholder"
               :render="header.column.columnDef.header"
@@ -103,8 +104,6 @@ const table = useVueTable({
         </template> -->
       </TableBody>
     </Table>
-
-
   </div>
-  <Pagination v-if="props?.data?.length"  :table="table" />
+  <Pagination v-if="props?.data?.length" :table="table" />
 </template>

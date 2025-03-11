@@ -9,6 +9,174 @@ export const instance = axios.create({
 })
 
 /*
+ *   Banners-API's
+ */
+
+export const getBanners = () => {
+  return new Promise((resolve, reject) => {
+    axios
+      // product_category
+      .get(`${STORE_BASE_URL}banner`)
+      .then((resp) => {
+        resolve(resp)
+      })
+      .catch((error) => {
+        reject(error)
+      })
+  })
+}
+
+export const addBanner = ({ title, image, product_id }) => {
+  const formData = new FormData()
+  formData.append('title', title)
+  if (image) {
+    formData.append('image', image)
+  }
+  formData.append('product_id', product_id)
+
+  return new Promise((resolve, reject) => {
+    axios
+      // product_category
+      .post(`${STORE_BASE_URL}banner_store`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+      .then((resp) => {
+        resolve(resp)
+      })
+      .catch((error) => {
+        reject(error)
+      })
+  })
+}
+
+export const updateBanner = ({ title, image, product_id, id }) => {
+  const formData = new FormData()
+  formData.append('title', title)
+  if (image) {
+    formData.append('image', image)
+  }
+  formData.append('product_id', product_id)
+  formData.append('id', id)
+
+  return new Promise((resolve, reject) => {
+    axios
+      // product_category
+      .post(`${STORE_BASE_URL}banner_update`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+      .then((resp) => {
+        resolve(resp)
+      })
+      .catch((error) => {
+        reject(error)
+      })
+  })
+}
+
+export const deleteBanner = ({ id }) => {
+  return new Promise((resolve, reject) => {
+    axios
+      .post(`${STORE_BASE_URL}banner_delete`, {
+        id: id
+      })
+      .then((resp) => {
+        resolve(resp)
+      })
+      .catch((error) => {
+        reject(error)
+      })
+  })
+}
+
+/*
+ *   Offers-API's
+ */
+
+export const getOffers = (token) => {
+  return new Promise((resolve, reject) => {
+    instance
+      .post('offers', {
+        token: token
+      })
+      .then((resp) => {
+        resolve(resp)
+      })
+      .catch((error) => {
+        reject(error)
+      })
+  })
+}
+
+export const addOffer = ({ title, image, price, token }) => {
+  const formData = new FormData()
+  formData.append('offer_title', title)
+  formData.append('offer_price', price)
+  if (image) {
+    formData.append('offer_image', image)
+  }
+  formData.append('token', token)
+
+  return new Promise((resolve, reject) => {
+    instance
+      .post('offers/add', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+      .then((resp) => {        
+        resolve(resp)
+      })
+      .catch((error) => {
+        reject(error)
+      })
+  })
+}
+
+export const updateOffer = ({ title, image, price, token ,id }) => {
+  const formData = new FormData()
+  formData.append('offer_title', title)
+  formData.append('offer_price', price)
+  if (image) {
+    formData.append('offer_image', image)
+  }
+  formData.append('token', token)
+
+  return new Promise((resolve, reject) => {
+    instance
+      .post(`offers/edit/${id}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+      .then((resp) => {
+        resolve(resp)
+      })
+      .catch((error) => {
+        reject(error)
+      })
+  })
+}
+
+export const deleteOffer = ({ token, id }) => {
+  return new Promise((resolve, reject) => {
+    instance
+      .post(`offers/delete/${id}`, {
+        token: token
+      })
+      .then((resp) => {
+        resolve(resp)
+      })
+      .catch((error) => {
+        reject(error)
+      })
+  })
+}
+
+/*
  *   States-API's
  */
 
@@ -330,7 +498,6 @@ export const addOrder = ({
   product_transportation_cost,
   token
 }) => {
-
   return new Promise((resolve, reject) => {
     instance
       // product_category

@@ -76,28 +76,27 @@ import {
   DialogTrigger
 } from '@/components/ui/dialog'
 
-import { Checkbox } from '@/components/ui/checkbox'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
-import { Edit, MoreHorizontal, Trash } from 'lucide-vue-next'
+import {MoreHorizontal, Trash } from 'lucide-vue-next'
 import EditButton from './EditButton.vue'
 import Loader from '@/components/Loader.vue'
 
-import { deleteCategory } from '@/services/api.js'
+import { deleteOffer } from '@/services/api.js'
 
 import { ref } from 'vue'
 import { useToast } from '@/components/ui/toast/use-toast'
 import { useAuthStore } from '@/stores/authStore'
-import { useCategoriesStore } from '@/stores/appStore.js'
+import { useOffersStore } from '@/stores/appStore.js'
 
 const { toast } = useToast()
 
 const authStore = useAuthStore()
-const categoriesStore = useCategoriesStore()
+const offersStore = useOffersStore()
 
 const Loading = ref(false)
 
@@ -111,10 +110,10 @@ const handelDelete = () => {
   const token = authStore.token
   const id = props.item.ID
 
-  deleteCategory({ id, token })
+  deleteOffer({ id, token })
     .then((res) => {
       Loading.value = false
-      categoriesStore.getItems(authStore.token)
+      offersStore.getItems(authStore.token)
       if (res.data.succNum === 200) {
         toast({
           title: 'delete_data_success',
@@ -137,4 +136,3 @@ const handelDelete = () => {
 </script>
 
 <style scoped></style>
-@/stores/appStore

@@ -1,5 +1,5 @@
-import { defineStore } from "pinia";
-import { ref } from "vue";
+import { defineStore } from 'pinia'
+import { ref } from 'vue'
 import {
   getCategories,
   getProducts,
@@ -7,164 +7,207 @@ import {
   getNotifications,
   getOrders,
   getDeliveryBoys,
-} from "../services/api";
+  getBanners,
+  getOffers
+} from '../services/api'
 
 /*
  * Categories API
  */
 
-export const useCategoriesStore = defineStore("category", () => {
+export const useCategoriesStore = defineStore('category', () => {
   /* state */
-  const Items = ref([]);
+  const Items = ref([])
 
   /* Actions */
   const getItems = (token) => {
     getCategories(token)
       .then((res) => {
-        Items.value = res.data.categories;
+        Items.value = res.data.categories
       })
-      .catch((err) => {});
-  };
+      .catch((err) => {})
+  }
 
   return {
     Items,
-    getItems,
-  };
-});
+    getItems
+  }
+})
 
 /*
  * Products API __________
  */
 
-export const useProductsStore = defineStore("product", () => {
+export const useProductsStore = defineStore('product', () => {
   /* state */
-  const Items = ref([]);
+  const Items = ref([])
 
   /* Actions */
   const getItems = (token) => {
     getProducts(token)
       .then((res) => {
-        Items.value = res.data.Products;
+        Items.value = res.data.Products
       })
-      .catch((err) => {});
-  };
+      .catch((err) => {})
+  }
 
   return {
     Items,
-    getItems,
-  };
-});
+    getItems
+  }
+})
 
 /*
  * Users API
  */
 
-export const useUsersStore = defineStore("User", () => {
+export const useUsersStore = defineStore('User', () => {
   /* state */
-  const Items = ref([]);
+  const Items = ref([])
 
   /* Actions */
   const getItems = (token) => {
     getUsers(token)
       .then((res) => {
-      
-        Items.value = res.data.clients;
+        Items.value = res.data.clients
       })
-      .catch((err) => {});
-  };
+      .catch((err) => {})
+  }
 
   return {
     Items,
-    getItems,
-  };
-});
+    getItems
+  }
+})
 
 /*
  * Notifications API
  */
 
-export const useNotificationsStore = defineStore("Notifications", () => {
+export const useNotificationsStore = defineStore('Notifications', () => {
   // state
 
-  const Items = ref([]);
+  const Items = ref([])
 
-
-  
   const getItems = (token) => {
     getNotifications(token)
       .then((res) => {
-        
-        Items.value = res.data.Notifications;
-
+        Items.value = res.data.Notifications
       })
-      .catch((err) => {
-      });
-  };
+      .catch((err) => {})
+  }
   const addItem = (item) => {
     //Find the object whose id is similar to the item
-    const existingItem = Items.value.find((x) => x.id === item.id);
+    const existingItem = Items.value.find((x) => x.id === item.id)
 
     if (!existingItem) {
-      Items.value.push({ ...item, quantity: 1 });
+      Items.value.push({ ...item, quantity: 1 })
     }
-  };
+  }
 
   const removeItem = (ID) => {
-    Items.value = Items.value.filter((x) => x.ID !== ID);
-  };
+    Items.value = Items.value.filter((x) => x.ID !== ID)
+  }
 
   return {
     Items,
     addItem,
     getItems,
-    removeItem,
-  };
-});
+    removeItem
+  }
+})
 
 /*
  * DeliveryBoys API
  */
 
-export const useDeliveryStore = defineStore("Delivery", () => {
+export const useDeliveryStore = defineStore('Delivery', () => {
   /* state */
-  const Items = ref([]);
+  const Items = ref([])
 
   /* Actions */
   const getItems = (token) => {
     getDeliveryBoys(token)
       .then((res) => {
-        
-        Items.value = res.data.Captains;
+        Items.value = res.data.Captains
       })
-      .catch((err) => {});
-  };
+      .catch((err) => {})
+  }
 
   return {
     Items,
-    getItems,
-  };
-});
+    getItems
+  }
+})
 
 /*
  * Orders API
  */
 
-export const useOrdersStore = defineStore("order", () => {
+export const useOrdersStore = defineStore('order', () => {
   /* state */
-  const Items = ref([]);
+  const Items = ref([])
 
   /* Actions */
   const getItems = (token) => {
     getOrders(token)
       .then((res) => {
-        
-        Items.value = res.data.orders;
+        Items.value = res.data.orders
       })
-      .catch((err) => {});
-  };
+      .catch((err) => {})
+  }
 
   return {
     Items,
-    getItems,
-  };
-});
+    getItems
+  }
+})
+
+/*
+ *  Banners API
+ */
+
+export const useBannersStore = defineStore('banner', () => {
+  /* state */
+  const Items = ref([])
+
+  /* Actions */
+  const getItems = (token) => {
+    getBanners(token)
+      .then((res) => {
+        Items.value = res.data.data
+        
+      })
+      .catch((err) => {})
+  }
+
+  return {
+    Items,
+    getItems
+  }
+})
+
+/*
+ *  Offers API
+ */
+
+export const useOffersStore = defineStore('offers', () => {
+  /* state */
+  const Items = ref([])
+
+  /* Actions */
+  const getItems = (token) => {
+    getOffers(token)
+      .then((res) => {
+
+        Items.value = res.data.Offers
+        
+      })
+      .catch((err) => {})
+  }
+
+  return {
+    Items,
+    getItems
+  }
+})

@@ -9,8 +9,8 @@
     </div>
 
     <DataTable
-      v-if="categoriesStore.Items?.length"
-      :data="categoriesStore.Items"
+      v-if="offersStore.Items?.length"
+      :data="offersStore.Items"
       :columns="columns"
     />
     <div v-else class="h-screen">
@@ -29,14 +29,15 @@ import DataTable from './components/DataTable.vue'
 import { columns } from './components/columns'
 import AddOffer from './components/AddOffer.vue'
 import { Skeleton } from '@/components/ui/skeleton'
-import { useCategoriesStore } from '@/stores/appStore.js'
+import { useOffersStore} from '@/stores/appStore.js'
 import Loader from '@/components/Loader.vue'
 import { useAuthStore } from '@/stores/authStore'
 
 const authStore = useAuthStore()
-const categoriesStore = useCategoriesStore()
+const offersStore = useOffersStore();
 
 onMounted(() => {
-  categoriesStore.getItems(authStore.token)
+  offersStore.getItems(authStore.token)
+
 })
 </script>

@@ -17,23 +17,33 @@
 
       <div class="mt-4 mx-auto w-full">
         <vee-form :validation-schema="schema" @submit="handelAdd" class="space-y-6">
-          <!-- <BaseInput
-            :value="form.name"
-            v-model="form.name"
-            :placeholder="$t(`categories_page.category_name`)"
-            name="name"
-            :label="$t(`categories_page.category_name`)"
-          /> -->
+          <BaseInput
+            :value="form.product_id"
+            v-model="form.product_id"
+            :placeholder="$t(`product_id`)"
+            name="product_id"
+            type="number"
+            :label="$t(`product_id`)"
+          />
+
+          <BaseInput
+            :value="form.title"
+            v-model="form.title"
+            :placeholder="$t(`banners_page.banner_title`)"
+            name="title"
+            type="text"
+            :label="$t(`banners_page.banner_title`)"
+          />
 
           <FileInput
             :value="form.image"
             v-model="form.image"
-            :onchange="previewFile"
+            @change="previewFile"
             :label="$t(`banners_page.banner_image`)"
           />
 
           <div v-if="form.image" class="">
-            <img :src="form.image" class="h-24 w-24" alt="" />
+            <img :src="form.image" class="h-64 w-64" alt="" />
           </div>
 
           <DialogFooter class="flex items-end">
@@ -71,8 +81,9 @@ import { Plus } from 'lucide-vue-next'
 import { ref, watch } from 'vue'
 import BaseInput from '@/components/BaseInput.vue'
 import FileInput from '@/components/fileInput.vue'
+import { addBanner } from '@/services/api'
 import { useAuthStore } from '@/stores/authStore'
-import { useCategoriesStore } from '@/stores/appStore.js'
+import { useBannersStore } from '@/stores/appStore.js'
 import { useToast } from '@/components/ui/toast/use-toast'
 import { useRouter } from 'vue-router'
 import Loader from '@/components/Loader.vue'
@@ -80,18 +91,20 @@ import Loader from '@/components/Loader.vue'
 defineRule('required', required)
 
 const authStore = useAuthStore()
-const categoriesStore = useCategoriesStore()
+const bannersStore = useBannersStore()
 const { toast } = useToast()
 const Router = useRouter()
 
 const schema = {
-  name: { required: true },
+  // name: { required: true },
+  title: { required: true },
+  product_id: { required: true },
   image: { required: true }
 }
 
-function previewFile() {
+function previewFile(event) {
   const preview = document.querySelector('img')
-  const file = document.querySelector('input[type=file]').files[0]
+  const file = event.target.files[0]
   const reader = new FileReader()
 
   reader.onloadend = () => {
@@ -106,22 +119,30 @@ function previewFile() {
 }
 
 const handelAdd = (values) => {
-  const token = authStore.token
+  // const token = authStore.token
   loading.value = true
-  addCategory({ ...values, token })
+  addBanner({ ...values })
     .then((res) => {
+      bannersStore.getItems()
       loading.value = false
-      if (res.data.succNum === 200) {
-        Router.push('/dashboard/categories')
-        categoriesStore.getItems(authStore.token)
+      if (res.data.success === true) {
         toast({
           title: 'add_data_success',
           success: true,
           duration: 3000
         })
+
+        form.value = {
+          name: '',
+          file: '',
+          image: '',
+          title: '',
+          product_id: ''
+        }
       }
     })
     .catch((error) => {
+      console.log(error)
       loading.value = false
       if (!error.response) {
         toast({
@@ -137,7 +158,9 @@ const loading = ref(false)
 const form = ref({
   name: '',
   file: '',
-  image: ''
+  image: '',
+  title: '',
+  product_id: ''
 })
 </script>
 

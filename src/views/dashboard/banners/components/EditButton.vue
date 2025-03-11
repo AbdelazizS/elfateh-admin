@@ -20,41 +20,44 @@
 
       <div class="mt-4 mx-auto w-full">
         <vee-form :validation-schema="schema" @submit="handelUpdate" class="space-y-6">
-          <!-- <BaseInput
-            :value="form.name"
-            v-model="form.name"
-            :placeholder="$t('categories_page.category_name')"
-            name="name"
-            :label="$t('categories_page.category_name')"
-          /> -->
+          <BaseInput
+            :value="form.product_id"
+            v-model="form.product_id"
+            :placeholder="$t(`product_id`)"
+            name="product_id"
+            type="number"
+            :label="$t(`product_id`)"
+          />
 
+          <BaseInput
+            :value="form.title"
+            v-model="form.title"
+            :placeholder="$t(`banners_page.banner_title`)"
+            name="title"
+            type="text"
+            :label="$t(`banners_page.banner_title`)"
+          />
 
           <FileInput
             :value="form.image"
             v-model="form.image"
-            
             :onchange="previewFile"
             :label="$t(`banners_page.banner_image`)"
           />
-
 
           <!-- 
            * 1-from props 
            * 2-stat changes image 
            -->
-          <img
-            v-if="form.file"
-            :src="form.image ? form.image : form.file"
-            class="h-24 w-24"
-          />
+          <img v-if="form.file" :src="form.image ? form.image : form.file" class="h-72 w-72" />
 
           <!-- <Skeleton class="h-24 w-24" /> -->
 
           <DialogFooter class="flex items-end">
             <DialogClose>
-            <Button type="submit">
-              {{ $t('save_changes') }}
-            </Button>
+              <Button type="submit">
+                {{ $t('save_changes') }}
+              </Button>
             </DialogClose>
           </DialogFooter>
         </vee-form>
@@ -84,62 +87,64 @@ import { defineRule } from 'vee-validate'
 import { ref } from 'vue'
 import { useToast } from '@/components/ui/toast/use-toast'
 import Loader from '@/components/Loader.vue'
-import { useCategoriesStore } from '@/stores/appStore.js'
+import { useBannersStore } from '@/stores/appStore.js'
 import { useAuthStore } from '@/stores/authStore'
-
-import { updateCategory } from '@/services/api.js'
+import { watch } from 'vue'
+import { updateBanner } from '@/services/api.js'
 
 const props = defineProps({
   item: { type: Object }
 })
 
+
+watch(() => props.item, (newVal) => {
+  form.value.title = newVal.title
+  form.value.product_id = newVal.product_id
+  form.value.file = newVal.image
+})
 defineRule('required', required)
 defineRule('min', min)
 
 const schema = {
-  name: { required: true },
-  // image: { required: true }
+  title: 'required|min:3',
+  product_id: 'required'
 }
 
 const { toast } = useToast()
 
 const Loading = ref(false)
 const form = ref({
-  name: props.item.Category_name,
-  file: props.item.Image,
-  image: "",
+  title: props.item.title,
+  product_id: props.item.product_id,
+  file: props.item.image,
+  image: ''
 })
 
-const categoriesStore = useCategoriesStore()
-const authStore = useAuthStore()
+const bannersStore = useBannersStore();
 
-const token = authStore.token
-const id = props.item.ID
+// const authStore = useAuthStore()
+// const token = authStore.token
+const id = props.item.id
 
+const handelUpdate = (values) => {
 
+  Loading.value = true
 
-const handelUpdate = (values) => {  
-  form.value.name = values.name
-
-  
-
-  
-  
-  updateCategory({ ...values, id, token })
+  updateBanner({ ...values, id })
     .then((res) => {
-      categoriesStore.getItems(authStore.token)
-      if (res.data.succNum === 200) {
+      Loading.value = false
+      if(res.data.success === true){
+        bannersStore.getItems();
         toast({
           title: 'update_data_success',
           success: true,
           duration: 3000
         })
-      }
+      }      
     })
     .catch((error) => {
       console.log(error)
-
-      // Loading.value = false
+      Loading.value = false
       if (!error.response) {
         toast({
           title: 'network_error',
@@ -148,6 +153,30 @@ const handelUpdate = (values) => {
         })
       }
     })
+
+  // updateCategory({ ...values, id, token })
+  //   .then((res) => {
+  //     categoriesStore.getItems(authStore.token)
+  //     if (res.data.succNum === 200) {
+  //       toast({
+  //         title: 'update_data_success',
+  //         success: true,
+  //         duration: 3000
+  //       })
+  //     }
+  //   })
+  //   .catch((error) => {
+  //     console.log(error)
+
+  //     // Loading.value = false
+  //     if (!error.response) {
+  //       toast({
+  //         title: 'network_error',
+  //         error: true,
+  //         duration: 3000
+  //       })
+  //     }
+  //   })
 }
 
 function previewFile() {
@@ -166,4 +195,3 @@ function previewFile() {
   }
 }
 </script>
-@/stores/appStore.js

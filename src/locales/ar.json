@@ -172,6 +172,7 @@
   },
   "banners_page": {
     "add_new": "أضف بانر جديدة",
+    "banner_title": "عنوان البانر",
     "add_description": "أدخل بيانات البانر , ثم أضغط زر أضف الفئة",
     "add_banner": "أضف البانر",
     "banners_page_description": "تحكم في البانرات  قم باضافة وحذف بانرات معينة",
@@ -189,6 +190,7 @@
     "product_name": "إسم أو عنوان المنتج",
     "offer_percent": "نسبة التخفيض",
     "offer_description": "وصف العرض",
+    "offer_price": "سعر العرض",
     "offer_image":"صورة العرض"
   },
 

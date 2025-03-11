@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
@@ -6,8 +6,21 @@ import { DateRangePicker } from '@/components/ui/daterange-picker'
 import RecentSales from '@/components/examples/RecentSales.vue'
 import Overview from '@/components/examples/Overview.vue'
 import Heading from '@/components/heading.vue'
-
 import { AreaChart } from '@/components/ui/chart-area'
+import { onMounted } from 'vue'
+
+import { useOrdersStore, useUsersStore } from '@/stores/appStore.js'
+import { useAuthStore } from '@/stores/authStore'
+
+const authStore = useAuthStore()
+
+const ordersStore = useOrdersStore()
+const usersStore = useUsersStore()
+
+onMounted(() => {
+  ordersStore.getItems(authStore.token)
+  usersStore.getItems(authStore.token)
+})
 
 const data = [
   {
@@ -50,10 +63,7 @@ const data = [
 
 <template>
   <div>
-    <Heading
-      :title="`${$t('dashboard')}`"
-      :description="`${$t('dashboard_description')}`"
-    />
+    <Heading :title="`${$t('dashboard')}`" :description="`${$t('dashboard_description')}`" />
     <!-- <page-header title="Dashboard">
       <div class="flex items-center space-x-2">
         <DateRangePicker />
@@ -68,8 +78,8 @@ const data = [
         </TabsTrigger>
       </TabsList> -->
       <TabsContent value="overview" class="space-y-4">
-        <div class="rtl-dir grid gap-4 md:grid-cols-2 lg:grid-cols-4 ">
-          <Card class="rtl-dir" >
+        <div class="rtl-dir grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <Card class="rtl-dir">
             <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle class="text-sm font-medium">
                 {{ $t('total_payments') }}
@@ -89,14 +99,13 @@ const data = [
             </CardHeader>
             <CardContent>
               <div class="text-2xl font-bold">$45,231.89</div>
-              <p class="text-xs text-muted-foreground">+20.1% from last month</p>
             </CardContent>
           </Card>
           <Card class="rtl-dir">
             <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle class="text-sm font-medium"> 
+              <CardTitle class="text-sm font-medium">
                 {{ $t('total_users') }}
-               </CardTitle>
+              </CardTitle>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -113,15 +122,14 @@ const data = [
               </svg>
             </CardHeader>
             <CardContent>
-              <div class="text-2xl font-bold">+2350</div>
-              <p class="text-xs text-muted-foreground">+180.1% from last month</p>
+              <div class="text-2xl font-bold">+{{ usersStore.Items?.length }}</div>
             </CardContent>
           </Card>
           <Card class="rtl-dir">
             <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle class="text-sm font-medium"> 
+              <CardTitle class="text-sm font-medium">
                 {{ $t('total_orders') }}
-               </CardTitle>
+              </CardTitle>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -137,16 +145,16 @@ const data = [
               </svg>
             </CardHeader>
             <CardContent>
-              <div class="text-2xl font-bold">+12,234</div>
-              <p class="text-xs text-muted-foreground">+19% from last month</p>
+              <div class="text-2xl font-bold">
+                +{{ ordersStore.Items?.length }}
+              </div>
             </CardContent>
           </Card>
-          
         </div>
         <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-          <Card class="col-span-4 " >
+          <Card class="col-span-4">
             <CardHeader>
-              <CardTitle class="rtl-dir" >
+              <CardTitle class="rtl-dir">
                 {{ $t('overview') }}
               </CardTitle>
             </CardHeader>
@@ -162,7 +170,7 @@ const data = [
               <!-- <CardDescription> You made 265 sales this month. </CardDescription> -->
             </CardHeader>
             <CardContent>
-              <RecentSales />
+              <RecentSales :orders="ordersStore.Items" />
             </CardContent>
           </Card>
         </div>

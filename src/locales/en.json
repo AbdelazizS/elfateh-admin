@@ -18,7 +18,7 @@
 
   "arabic": "Arabic",
   "english": "English",
-
+  "dashboard_description": "Control all your products and manage orders",
 
   "Open":"Open",
   "Completed":"completed",
@@ -55,6 +55,13 @@
   "settings": "Settings",
   "notifications": "Notifications",
 
+  "total_payments": "Total Payments",
+  "total_users": "Total Users",
+  "last_sales": "Last Sales",
+  "total_orders": "Total Orders",
+  "overview": "Overview",
+
+
   "core": "core",
   "general": "general",
 
@@ -82,6 +89,7 @@
 
   "banners_page": {
     "banners_page_description": "Control banners, add and delete specific banner",
+    "banner_title": "Banner title",
     "add_new": "Add a new banner",
     "add_description": "Enter the banner data, then click the Add Banner button",
     "add_banner": "Add Banner",
@@ -97,6 +105,7 @@
     "product_name": "Product Name",
     "offer_percent": "Discount Percent ",
     "offer_description": "Offer description",
+    "offer_price": "Offer Price",
     "offer_image": "Offer image"
   },
   "categories_page": {

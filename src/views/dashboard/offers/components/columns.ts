@@ -3,21 +3,46 @@ import { h } from 'vue'
 import DataTableDropDown from './DataTableDropDown.vue'
 import TransLate from '@/components/TransLate.vue'
 
-export interface product {
+export interface offer {
   id: number
-  // name: string;
-  // email: string;
+  Image: string
+  'Offer_Title': string
+  'Offer_Price': string | number
 }
 
-export const columns: ColumnDef<product>[] = [
+export const columns: ColumnDef<offer>[] = [
   {
     accessorKey: 'ID',
     header: 'ID'
   },
   {
-    accessorKey: 'Category_name',
-    header: () => h(TransLate, { item: { key: 'category_name' } })
+    accessorKey: 'Offer_Title',
+    header: () => h(TransLate, { item: { key: 'offers_page.offer_name' } })
   },
+
+  {
+    accessorKey: 'Offer_Price',
+    header: () => h(TransLate, { item: { key: 'offers_page.offer_price' } })
+  },
+
+  {
+    accessorKey: 'Image',
+    header: () => h(TransLate, { item: { key: 'offers_page.offer_image' } }),
+
+    cell: ({ row }) => {
+      const imageSrc = row.original.Image
+
+      return h('img', {
+        src: imageSrc,
+        alt: 'image',
+        style: {
+          width: '160px',
+          height: '160px'
+        }
+      })
+    }
+  },
+
   // {
   //   accessorKey: 'product_description',
   //   header: 'Product description',

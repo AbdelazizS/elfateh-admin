@@ -83,21 +83,21 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
-import { Edit, MoreHorizontal, Trash } from 'lucide-vue-next'
+import { MoreHorizontal, Trash } from 'lucide-vue-next'
 import EditButton from './EditButton.vue'
 import Loader from '@/components/Loader.vue'
 
-import { deleteCategory } from '@/services/api.js'
+import { deleteBanner } from '@/services/api.js'
 
 import { ref } from 'vue'
 import { useToast } from '@/components/ui/toast/use-toast'
-import { useAuthStore } from '@/stores/authStore'
-import { useCategoriesStore } from '@/stores/appStore.js'
+// import { useAuthStore } from '@/stores/authStore'
+import { useBannersStore } from '@/stores/appStore.js'
 
 const { toast } = useToast()
 
-const authStore = useAuthStore()
-const categoriesStore = useCategoriesStore()
+// const authStore = useAuthStore()
+const bannersStore = useBannersStore()
 
 const Loading = ref(false)
 
@@ -108,33 +108,30 @@ const props = defineProps({
 const handelDelete = () => {
   Loading.value = true
 
-  const token = authStore.token
-  const id = props.item.ID
+  // const token = authStore.token
+  const id = props.item.id
 
-  deleteCategory({ id, token })
+  deleteBanner({ id })
     .then((res) => {
       Loading.value = false
-      categoriesStore.getItems(authStore.token)
-      if (res.data.succNum === 200) {
+      bannersStore.getItems()
+      if (res.status === 200) {
         toast({
-          title: 'delete_data_success',
-          success: true,
-          duration: 3000
+          title: 'Success',
+          description: 'Banner deleted successfully',
+          status: 'success'
         })
       }
     })
     .catch((error) => {
       Loading.value = false
-      if (!error.response) {
-        toast({
-          title: 'network_error',
-          error: true,
-          duration: 3000
-        })
-      }
+      toast({
+        title: 'Error',
+        description: error.message,
+        status: 'error'
+      })
     })
 }
 </script>
 
 <style scoped></style>
-@/stores/appStore

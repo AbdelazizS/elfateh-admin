@@ -11,26 +11,32 @@ export interface product {
 
 export const columns: ColumnDef<product>[] = [
   {
-    accessorKey: 'ID',
+    accessorKey: 'id',
     header: 'ID'
   },
   {
-    accessorKey: 'Category_name',
+    accessorKey: 'image',
     header: () => h(TransLate, { item: { key: 'banners_page.banner_image' } }),
 
     cell: ({ row }) => {
-      const imageSrc = row.original.Image
+      const imageSrc = row.original.image
 
-      console.log(row);
       
-
       return h('img', {
-        src:imageSrc,
-        alt: 'Example Image',
-        width: 120,
+        src: imageSrc,
+        alt: 'image',
+        style: {
+          width: '160px',
+          height: '160px'
+        }
       })
     }
   },
+  {
+    accessorKey: 'title',
+    header: () => h(TransLate, { item: { key: 'banners_page.banner_title' } })
+  },
+  
   {
     accessorKey: 'edit',
     header: '',
