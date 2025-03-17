@@ -20,14 +20,14 @@
 
       <div class="mt-4 mx-auto w-full">
         <vee-form :validation-schema="schema" @submit="handelUpdate" class="space-y-6">
-          <BaseInput
+          <!-- <BaseInput
             :value="form.product_id"
             v-model="form.product_id"
             :placeholder="$t(`product_id`)"
             name="product_id"
             type="number"
             :label="$t(`product_id`)"
-          />
+          /> -->
 
           <BaseInput
             :value="form.title"
@@ -99,7 +99,7 @@ const props = defineProps({
 
 watch(() => props.item, (newVal) => {
   form.value.title = newVal.title
-  form.value.product_id = newVal.product_id
+  // form.value.product_id = newVal.product_id
   form.value.file = newVal.image
 })
 defineRule('required', required)
@@ -107,7 +107,7 @@ defineRule('min', min)
 
 const schema = {
   title: 'required|min:3',
-  product_id: 'required'
+  // product_id: 'required'
 }
 
 const { toast } = useToast()

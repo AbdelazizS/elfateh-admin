@@ -17,14 +17,14 @@
 
       <div class="mt-4 mx-auto w-full">
         <vee-form :validation-schema="schema" @submit="handelAdd" class="space-y-6">
-          <BaseInput
+          <!-- <BaseInput
             :value="form.product_id"
             v-model="form.product_id"
             :placeholder="$t(`product_id`)"
             name="product_id"
             type="number"
             :label="$t(`product_id`)"
-          />
+          /> -->
 
           <BaseInput
             :value="form.title"
@@ -98,7 +98,7 @@ const Router = useRouter()
 const schema = {
   // name: { required: true },
   title: { required: true },
-  product_id: { required: true },
+  // product_id: { required: true },
   image: { required: true }
 }
 

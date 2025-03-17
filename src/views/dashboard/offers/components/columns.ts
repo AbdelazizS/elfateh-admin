@@ -5,9 +5,10 @@ import TransLate from '@/components/TransLate.vue'
 
 export interface offer {
   id: number
-  Image: string
-  'Offer_Title': string
-  'Offer_Price': string | number
+  offer_image: string
+  offer_title: string
+  offer_price: string
+  
 }
 
 export const columns: ColumnDef<offer>[] = [
@@ -16,21 +17,21 @@ export const columns: ColumnDef<offer>[] = [
     header: 'ID'
   },
   {
-    accessorKey: 'Offer_Title',
+    accessorKey: 'offer_title',
     header: () => h(TransLate, { item: { key: 'offers_page.offer_name' } })
   },
 
   {
-    accessorKey: 'Offer_Price',
+    accessorKey: 'offer_price',
     header: () => h(TransLate, { item: { key: 'offers_page.offer_price' } })
   },
 
   {
-    accessorKey: 'Image',
+    accessorKey: 'offer_image',
     header: () => h(TransLate, { item: { key: 'offers_page.offer_image' } }),
 
     cell: ({ row }) => {
-      const imageSrc = row.original.Image
+      const imageSrc = row.original.offer_image
 
       return h('img', {
         src: imageSrc,

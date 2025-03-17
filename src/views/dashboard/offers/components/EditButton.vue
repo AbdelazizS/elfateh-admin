@@ -21,6 +21,14 @@
       <div class="mt-4 mx-auto w-full">
         <vee-form :validation-schema="schema" @submit="handelUpdate" class="space-y-6">
           <BaseInput
+            :value="form.product_id"
+            v-model="form.product_id"
+            :placeholder="$t(`product_id`)"
+            name="product_id"
+            type="number"
+            :label="$t(`product_id`)"
+          />
+          <BaseInput
             :value="form.price"
             v-model="form.price"
             :placeholder="$t(`offers_page.offer_price`)"
@@ -45,7 +53,12 @@
             :label="$t('categories_page.category_image')"
           />
 
-          <img v-if="form.file" :src="form.image ? form.image : form.file" class="h-52 w-52" ref="preview" />
+          <img
+            v-if="form.file"
+            :src="form.image ? form.image : form.file"
+            class="h-52 w-52"
+            ref="preview"
+          />
 
           <DialogFooter class="flex items-end">
             <DialogClose>
@@ -97,25 +110,27 @@ const { toast } = useToast()
 const schema = {
   title: { required: true },
   price: { required: true },
+  product_id: { required: true }
   // image: { required: true }
 }
 
 const loading = ref(false)
 const form = ref({
-  title: props.item.Offer_Title,
-  price: props.item.Offer_Price,
-  file: props.item.Image,
+  title: props.item.offer_title,
+  price: props.item.offer_price,
+  file: props.item.offer_image,
+  product_id:'',
   image: ''
 })
 
-const id = props.item.ID
+const id = props.item.id
 
 const handelUpdate = (values) => {
   loading.value = true
   updateOffer({ ...values, id: id, token: authStore.token })
     .then((res) => {
       offersStore.getItems(authStore.token)
-      if (res.data.succNum === 200) {
+      if (res.data.success === true) {
         toast({
           title: 'update_data_success',
           success: true,
@@ -156,5 +171,3 @@ function previewFile(event) {
 </script>
 
 <style scoped></style>
-
-

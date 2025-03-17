@@ -191,7 +191,8 @@
     "offer_percent": "نسبة التخفيض",
     "offer_description": "وصف العرض",
     "offer_price": "سعر العرض",
-    "offer_image":"صورة العرض"
+    "offer_image":"صورة العرض",
+     "filter_by_title": "  إبحث عن إسم إو عنوان عرض معين "
   },
 
   "categories_page": {

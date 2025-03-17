@@ -20,19 +20,18 @@
   "english": "English",
   "dashboard_description": "Control all your products and manage orders",
 
-  "Open":"Open",
-  "Completed":"completed",
-  "In Progress":"in Progress",
+  "Open": "Open",
+  "Completed": "completed",
+  "In Progress": "in Progress",
 
-  
   "product_id": "Product id",
   "category_name": "Category name",
-  "Transportation_Cost":"Transportation Cost",
-  "Transportation_Cost_1":"Product Transportation Cost",
-  "Delivery_Boy":"Delivery Boy",
-  "Location":"Location",
-  "prominent_place":"Prominent Place",
-  "Order_Status":"Order Status",
+  "Transportation_Cost": "Transportation Cost",
+  "Transportation_Cost_1": "Product Transportation Cost",
+  "Delivery_Boy": "Delivery Boy",
+  "Location": "Location",
+  "prominent_place": "Prominent Place",
+  "Order_Status": "Order Status",
   "Client_Name": "Client Name",
   "Date": "Date",
   "product_price": "Product Price",
@@ -60,7 +59,6 @@
   "last_sales": "Last Sales",
   "total_orders": "Total Orders",
   "overview": "Overview",
-
 
   "core": "core",
   "general": "general",
@@ -106,7 +104,8 @@
     "offer_percent": "Discount Percent ",
     "offer_description": "Offer description",
     "offer_price": "Offer Price",
-    "offer_image": "Offer image"
+    "offer_image": "Offer image",
+    "filter_by_title": "Search for the title of a specific offer"
   },
   "categories_page": {
     "categories_page_description": "Control categories, add and delete specific categories",

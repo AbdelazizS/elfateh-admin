@@ -58,13 +58,13 @@ const table = useVueTable({
 </script>
 
 <template>
-  <!-- <Input
+  <Input
   v-if="props?.data?.length" 
     class="max-w-sm mb-4"
     :placeholder="$t('categories_page.filter_category_by_names')"
-    :model-value="table.getColumn('Category_name')?.getFilterValue()"
-    @update:model-value="table.getColumn('Category_name')?.setFilterValue($event)"
-  /> -->
+    :model-value="table.getColumn('offer_title')?.getFilterValue()"
+    @update:model-value="table.getColumn('offer_title')?.setFilterValue($event)"
+  />
 
   <div v-if="props?.data?.length" class="border rounded-md">
     <Table>

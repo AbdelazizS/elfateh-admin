@@ -17,6 +17,15 @@
 
       <div class="mt-4 mx-auto w-full">
         <vee-form :validation-schema="schema" @submit="handelAdd" class="space-y-6">
+
+         <BaseInput
+            :value="form.product_id"
+            v-model="form.product_id"
+            :placeholder="$t(`product_id`)"
+            name="product_id"
+            type="number"
+            :label="$t(`product_id`)"
+          />
           <BaseInput
             :value="form.price"
             v-model="form.price"
@@ -43,7 +52,7 @@
           />
 
           <div v-if="form.image" class="">
-            <img ref="preview" :src="form.image" class="h-64 w-64" alt="" />
+            <img ref="preview" :src="form.image" class="h-52 w-52" alt="" />
           </div>
 
           <DialogFooter class="flex items-end">
@@ -99,7 +108,8 @@ const schema = {
   // name: { required: true },
   title: { required: true },
   price: { required: true },
-  image: { required: true }
+  image: { required: true },
+  product_id: { required: true }
 }
 
 const preview = ref(null)

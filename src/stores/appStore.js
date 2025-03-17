@@ -200,7 +200,11 @@ export const useOffersStore = defineStore('offers', () => {
     getOffers(token)
       .then((res) => {
 
-        Items.value = res.data.Offers
+        Items.value = res.data.data
+
+
+        
+        
         
       })
       .catch((err) => {})

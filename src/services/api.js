@@ -32,7 +32,7 @@ export const addBanner = ({ title, image, product_id }) => {
   if (image) {
     formData.append('image', image)
   }
-  formData.append('product_id', product_id)
+  // formData.append('product_id', product_id)
 
   return new Promise((resolve, reject) => {
     axios
@@ -43,6 +43,7 @@ export const addBanner = ({ title, image, product_id }) => {
         }
       })
       .then((resp) => {
+        
         resolve(resp)
       })
       .catch((error) => {
@@ -57,8 +58,8 @@ export const updateBanner = ({ title, image, product_id, id }) => {
   if (image) {
     formData.append('image', image)
   }
-  formData.append('product_id', product_id)
   formData.append('id', id)
+  // formData.append('product_id', product_id)
 
   return new Promise((resolve, reject) => {
     axios
@@ -72,6 +73,7 @@ export const updateBanner = ({ title, image, product_id, id }) => {
         resolve(resp)
       })
       .catch((error) => {
+        
         reject(error)
       })
   })
@@ -111,10 +113,11 @@ export const getOffers = (token) => {
   })
 }
 
-export const addOffer = ({ title, image, price, token }) => {
+export const addOffer = ({ title, image,product_id , price, token }) => {
   const formData = new FormData()
   formData.append('offer_title', title)
   formData.append('offer_price', price)
+  formData.append('product_id', product_id)
   if (image) {
     formData.append('offer_image', image)
   }
@@ -122,24 +125,27 @@ export const addOffer = ({ title, image, price, token }) => {
 
   return new Promise((resolve, reject) => {
     instance
-      .post('offers/add', formData, {
+      .post('add_offer', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       })
-      .then((resp) => {        
+      .then((resp) => {       
+         
         resolve(resp)
       })
       .catch((error) => {
+        
         reject(error)
       })
   })
 }
 
-export const updateOffer = ({ title, image, price, token ,id }) => {
+export const updateOffer = ({ title, image, price, product_id,token ,id }) => {
   const formData = new FormData()
   formData.append('offer_title', title)
   formData.append('offer_price', price)
+  formData.append('product_id', product_id)
   if (image) {
     formData.append('offer_image', image)
   }
@@ -147,15 +153,19 @@ export const updateOffer = ({ title, image, price, token ,id }) => {
 
   return new Promise((resolve, reject) => {
     instance
-      .post(`offers/edit/${id}`, formData, {
+      .post(`offers/update/${id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       })
       .then((resp) => {
+        console.log(resp);
+        
         resolve(resp)
       })
       .catch((error) => {
+        console.log(error);
+        
         reject(error)
       })
   })
@@ -169,6 +179,7 @@ export const deleteOffer = ({ token, id }) => {
       })
       .then((resp) => {
         resolve(resp)
+        
       })
       .catch((error) => {
         reject(error)

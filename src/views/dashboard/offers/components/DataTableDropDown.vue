@@ -82,7 +82,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
-import {MoreHorizontal, Trash } from 'lucide-vue-next'
+import { MoreHorizontal, Trash } from 'lucide-vue-next'
 import EditButton from './EditButton.vue'
 import Loader from '@/components/Loader.vue'
 
@@ -108,13 +108,13 @@ const handelDelete = () => {
   Loading.value = true
 
   const token = authStore.token
-  const id = props.item.ID
+  const id = props.item.id
 
   deleteOffer({ id, token })
     .then((res) => {
       Loading.value = false
       offersStore.getItems(authStore.token)
-      if (res.data.succNum === 200) {
+      if (res.data.success === true) {
         toast({
           title: 'delete_data_success',
           success: true,

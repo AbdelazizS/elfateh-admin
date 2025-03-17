@@ -66,12 +66,9 @@ const onSubmit = (values) => {
       if (response.data.errNum === 'E002') {
         errorMsg.value = 'verify_your_email'
       }
-      console.log(response)
     })
     .catch((error) => {
       loading.value = false
-      console.log(error)
-
       if (!error.response) {
         toast({
           title: 'network_error',
